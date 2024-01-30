@@ -1,0 +1,21 @@
+.features-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feature-card {
+    padding: 2rem;
+    margin: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.feature-card img {
+    margin-bottom: 1rem;
+}

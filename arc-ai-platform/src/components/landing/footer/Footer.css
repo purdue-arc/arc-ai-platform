@@ -1,0 +1,116 @@
+.landing-footer {
+    background-color: #f2f2f2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-content > div {
+    padding: 1rem;
+}
+
+.social-media h2, .contact-info h2, .resources h2, .newsletter h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.social-media ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.social-media li {
+    margin-bottom: 0.5rem;
+}
+
+.social-media li a {
+    text-decoration: none;
+    color: #444;
+    display: flex;
+    align-items: center;
+}
+
+.social-media li a i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.contact-info p {
+    line-height: 1.5;
+}
+
+.resources ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resources li {
+    margin-bottom: 0.5rem;
+}
+
+.resources li a {
+    text-decoration: none;
+    color: #444;
+}
+
+.newsletter form {
+    display: flex;
+    align-items: center;
+}
+
+.newsletter input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    flex-grow: 1;
+    margin-right: 0.5rem;
+}
+
+.newsletter button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.legal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.legal li {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+
+.legal li a {
+    text-decoration: none;
+    color: #999;
+}
+
+
+/* You can add additional styles for hover effects, different color schemes, etc. */
+
+
