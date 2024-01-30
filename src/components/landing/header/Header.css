@@ -1,21 +1,48 @@
+
 .landing-header {
-    background-color: #000000;
-    color: #fff;
-    padding: 2vh;
-    height: 15vh;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    padding: 1vw;
+    background: rgb(2, 14, 31);
     align-items: center;
 }
 
-.landing-header nav {
-    display: flex;
-    list-style: inherit;
+.landing-nav ul {
+    list-style: none;
+    padding: 0;
     margin: 0;
+    display: flex;
+    /* Align nav items in a row */
+    align-items: center;
+    height: 100%;
 }
 
-.landing-header nav a {
-    color: #fff;
+.header-logo {
+    /* Adjust the size of your logo as necessary */
+    height: auto;
+    /* Example height for your logo */
+    width: 10vw;
+    align-self: center;
+    padding-right: 32vw;
+}
+
+.nav-link {
+    /* Adjust the size of your logo as necessary */
+    height: 4vh;
+    /* Example height for your logo */
+}
+
+.landing-nav ul li {
+    height: 4vw;
+    margin-left: 3vw;
+}
+
+.landing-nav ul li a {
+    font-family: 'Sansation', sans-serif;
+    font-size: 1vw;
+    color: #ffffff;
     text-decoration: none;
-    padding: 2vh 1vw;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 4vw;
 }

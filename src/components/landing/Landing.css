@@ -1,17 +1,11 @@
-/* Basic styling example */
-.landing-page-container {
-    width: 100vw;
-    flex-display: block;
-    background-color: #f5f5f5;
-    font-family: sans-serif;
-}
+
 
 .landing-content {
     background-color: #141d3f;
     color: #fff;
     text-align: center;
+    width: 100vw;
     justify-content: center;
-
 }
 
 /* ... styles for other sections */

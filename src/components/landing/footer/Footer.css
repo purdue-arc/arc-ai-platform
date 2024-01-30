@@ -1,39 +1,31 @@
 .landing-footer {
-    background-color: #f2f2f2;
+    background: black;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    height: auto; /* Adjust height as needed */
 }
 
 .footer-content {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    flex-wrap: wrap;
 }
 
-.footer-content > div {
-    padding: 1rem;
+.footer-subtitle{
+    font-size : 3vw;
+}
+.social-media, .contact-info, .resources, .newsletter{
+    max-width: 25vw;!important;
+    display: flex;
+    flex-direction: column;
 }
 
-.social-media h2, .contact-info h2, .resources h2, .newsletter h2 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.social-media ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.social-media li {
-    margin-bottom: 0.5rem;
-}
-
-.social-media li a {
+.social-media a {
     text-decoration: none;
     color: #444;
     display: flex;
@@ -44,22 +36,11 @@
     font-size: 1.5rem;
     margin-right: 0.5rem;
 }
-
 .contact-info p {
     line-height: 1.5;
 }
 
-.resources ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.resources li {
-    margin-bottom: 0.5rem;
-}
-
-.resources li a {
+.resources a {
     text-decoration: none;
     color: #444;
 }
@@ -94,10 +75,10 @@
 }
 
 .legal {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+    display: flex;
+    justify-content: center; /* Center the legal links */
+    width: 100%; /* Full width */
+    margin-top: 1rem; /* Space from the content above */
 }
 
 .legal li {

@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "arc-ai-platform/node_modules/.bin/vite",
-    "build": "arc-ai-platform/node_modules/.bin/vite build",
-    "lint": "arc-ai-platform/node_modules/.bin/eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "arc-ai-platform/node_modules/.bin/vite preview"
+    "dev": "node_modules/.bin/vite",
+    "build": "node_modules/.bin/vite build",
+    "lint": "node_modules/.bin/eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "node_modules/.bin/vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",

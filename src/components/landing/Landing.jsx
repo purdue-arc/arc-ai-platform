@@ -8,13 +8,13 @@ import "./Landing.css";
 
 function Landing() {
   return (
-    <div className="landing-page-container">
+    <div>
       <Header />
-      <main className="landing-content">
+      <div className="landing-content">
         <HeroSection />
         <FeaturesSection />
         <CtaSection />
-      </main>
+      </div>
       <Footer />
     </div>
   );
