@@ -7,7 +7,7 @@ function Header() {
       <Link to="/">
         <div>link</div>
       </Link>
-      <nav>
+      <nav className="landing-header-nav">
         <Link to="/about">About</Link>
         <Link to="/features">Features</Link>
         <Link to="/contact">Contact</Link>

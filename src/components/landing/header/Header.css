@@ -1,20 +1,21 @@
 .landing-header {
-    background-color: #007bff;
+    background-color: #000000;
     color: #fff;
-    padding: 2rem;
+    padding: 2vh;
+    height: 15vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .landing-header nav {
     display: flex;
-    list-style: none;
+    list-style: inherit;
     margin: 0;
 }
 
 .landing-header nav a {
     color: #fff;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 2vh 1vw;
 }

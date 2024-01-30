@@ -1,18 +1,17 @@
 /* Basic styling example */
 .landing-page-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vw;
+    width: 100vw;
+    flex-display: block;
     background-color: #f5f5f5;
     font-family: sans-serif;
 }
 
 .landing-content {
-    background-color: #007bff;
+    background-color: #141d3f;
     color: #fff;
-    padding: 2rem;
     text-align: center;
+    justify-content: center;
+
 }
 
 /* ... styles for other sections */
