@@ -7,13 +7,15 @@
     align-items: center;
 }
 
-.landing-nav ul {
+.landing-nav {
     list-style: none;
-    padding: 0;
+    padding: 2vh 1vw;
     margin: 0;
     display: flex;
     /* Align nav items in a row */
-    align-items: center;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: row;
     height: 100%;
 }
 
