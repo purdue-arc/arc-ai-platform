@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CodeAssistant.css";
-import Header from "../landing/header/Header.jsx";
-import Footer from "../landing/footer/Footer.jsx";
+import Header from "../header/Header.jsx";
+import Footer from "../footer/Footer.jsx";
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");

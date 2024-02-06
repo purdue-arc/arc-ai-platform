@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Chatbot.css";
 import logo from "../../assets/logo.png";
-import Footer from "../landing/footer/Footer.jsx";
-import Header from "../landing/header/Header.jsx";
+import Footer from "../footer/Footer.jsx";
+import Header from "../header/Header.jsx";
 
 const Chatbot = () => {
   const [prompt, setPrompt] = useState("");

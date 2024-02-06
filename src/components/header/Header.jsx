@@ -6,11 +6,7 @@ function Header() {
   return (
     <header className="landing-header">
       <a href="/" className="header-logo-link">
-        <img
-          src="../../.././assets/react.svg"
-          alt="Logo"
-          className="header-logo"
-        />
+        <img src="../../assets/react.svg" alt="Logo" className="header-logo" />
       </a>
       <nav className="landing-nav">
         <li className="nav-link">
