@@ -1,70 +1,68 @@
 .codeReviewTool {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-evenly; /* Aligns children (form and settings panel) horizontally */
+    flex-wrap: wrap; /* Allows items to wrap as needed */
+    gap: 20px; /* Adds space between the form and settings panel */
+    padding: 20px 0; /* Adds padding at the top and bottom to avoid touching header/footer */
 }
 
-.topRightPanel {
-    position: fixed; /* Use fixed instead of absolute for a truly fixed position */
-    top: 20px;
-    right: 20px;
-    width: 20vw; /* Set a fixed width based on viewport width */
-    height: 30vh; /* Set a fixed height based on viewport height */
+.rightPanel {
+    /* Adjusted positioning */
+    position: relative; /* Changed from fixed to relative */
+    width: 20vw; /* Adjust width as needed */
+    min-width: 200px; /* Ensures the panel doesn't become too narrow */
+    height: auto; /* Height adjusted to content */
     background-color: #383838;
-    padding: 10px;
+    padding: 2vh;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: auto; /* Add scroll for small screens */
-    justify-content: flex-end;
+    overflow: auto; /* Keeps the overflow behavior */
 }
 
 .settingsPanel .setting {
-    margin: 10px 0;
+    display: flex; /* Aligns label and input horizontally */
+    align-items: center; /* Centers items vertically */
+    margin: 2vh 0;
+}
+
+.setting label {
+    flex: 1; /* Allows the label to fill the space */
+}
+
+.setting input[type="range"] {
+    flex: 2; /* Gives more space to the input */
+    margin-left: 10px; /* Adds some space between the label and the input */
 }
 
 .codeInputForm {
-    width: 80vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1;
+    width: 60vw;
+    max-width: 800px; /* Limits the maximum width */
+}
+
+.codeInput, .codeResponse {
+    width: 100%;
+    margin: 0 0 20px; /* Adjusts margin for spacing */
+
+    border-radius: 8px;
 }
 
 .codeInput {
-    width: 100%;
-    height: 50vh; /* Specify a fixed height or use percentage based on the parent's height */
-    margin: 20px 0;
-    padding: 15px;
-    font-family: 'Fira Code', monospace;
-    font-size: 14px;
-    border: 2px solid #007bff;
-    border-radius: 8px;
+    height: 30vh; /* Adjust based on your preference */
     background-color: #383838;
-    color: white; /* Adjusted for better contrast with the background */
-}
-
-button {
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 8px;
-    background-color: #0056b3; /* Adjust for a consistent hover effect */
     color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #004080; /* Darker shade on hover */
+    padding: 15px;
+    border: 2px solid #007bff;
 }
 
 .codeResponse {
-    width: 80vw; /* Adjusted to take up 80% of the viewport width */
-    min-height: 100px;
-    padding: 10px;
     background-color: #8ea47f;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    font-family: 'Fira Code', monospace;
+    height: 20vh;
     color: #333;
-    margin: 20px 0; /* Ensure there's some spacing around the response box */
+    min-height: 100px; /* Ensures there's enough space for the response */
+}
+
+button {
+    align-self: center; /* Centers the button in the form */
+    padding: 2vh 0;
 }

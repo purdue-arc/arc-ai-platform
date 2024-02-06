@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../landing/header/Header.jsx";
+import Footer from "../landing/footer/Footer.jsx";
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -36,7 +37,7 @@ const CodeAssistant = () => {
     <>
       <Header />
       <div className="codeReviewTool">
-        <div className="topRightPanel">
+        <div className="rightPanel">
           <div className="settingsPanel">
             <div className="setting">
               <label>Styling: {settings.styling}</label>
@@ -84,6 +85,7 @@ const CodeAssistant = () => {
           <div className="codeResponse">{response}</div>
         </form>
       </div>
+      <Footer />
     </>
   );
 };
