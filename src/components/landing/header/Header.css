@@ -2,9 +2,10 @@
 .landing-header {
     display: flex;
     flex-direction: row;
-    padding: 1vw;
     background: rgb(2, 14, 31);
     align-items: center;
+    width: 100vw;
+    height: 15vh;
 }
 
 .landing-nav {

@@ -1,16 +1,16 @@
 .landing-footer {
     background: black;
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto; /* Adjust height as needed */
+    height: 60vh;
+    width: 100vw;
 }
 
 .footer-content {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: self-start;
     width: 100%;
     flex-wrap: wrap;
@@ -86,12 +86,13 @@
     display: flex;
     justify-content: center; /* Center the legal links */
     width: 100%; /* Full width */
-    margin-top: 1rem; /* Space from the content above */
+    margin-top: 0rem; /* Space from the content above */
 }
 
 .legal li {
-    display: inline-block;
-    margin: 0 0.5rem;
+    display: flex;
+    justify-content: center;
+    margin: 9 0.5rem;
 }
 
 .legal li a {
