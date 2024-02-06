@@ -19,6 +19,9 @@ function Header() {
         <li className="nav-link">
           <a href="/registration">REGISTRATION</a>
         </li>
+        <li className="nav-link">
+          <a href="/Arcwiki">Arc Wiki</a>
+        </li>
       </nav>
     </header>
   );
