@@ -45,7 +45,10 @@ function Header() {
         className={`landing-header ${isCompact ? "compact" : ""}`}
         ref={headerRef}
       >
-        <a href="/" className="header-logo-link">
+        <a
+          href="/"
+          className={`header-logo-link ${isCompact ? "compact-logo-link" : ""}`}
+        >
           <img
             src={arcLogo}
             alt="Logo"

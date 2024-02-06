@@ -21,13 +21,15 @@
     background: rgba(3, 15, 42); /* Slightly darker for contrast, added transparency for effect */
     opacity: 1;
 }
-
-.header-logo, .header-logo.compact-logo {
+.header-logo-link{
+    padding: 0;
+}
+.header-logo, .header-logo.compact-logo, .header-logo-link.compact-logo-link {
     transition: transform 0.3s ease; /* Transition applies to both states */
     width: 10vw; /* Adjusted for consistency */
 }
 
-.header-logo.compact-logo {
+.header-logo.compact-logo, .header-logo-link.compact-logo-link {
     transform: scale(0.8); /* Adjust scale for a subtle change */
 }
 
@@ -49,7 +51,7 @@
     margin: 0 15px;
     font-weight: bold;
     font-size: 1vw; /* Standardized font size here */
-    padding: 0.5vw 1vw; /* Increased clickable area */
+    padding: 1vh 0.5vw; /* Increased clickable area */
     transition: color 0.2s ease; /* Smooth transition for hover effect */
 }
 
