@@ -4,6 +4,7 @@
     flex-direction: row;
     background: rgb(2, 14, 31);
     align-items: center;
+    z-index: 3;
     width: 100vw;
     height: 15vh;
 }

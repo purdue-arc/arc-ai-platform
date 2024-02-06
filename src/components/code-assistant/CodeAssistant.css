@@ -1,0 +1,70 @@
+.codeReviewTool {
+    display: flex;
+    justify-content: space-evenly; /* Aligns children (form and settings panel) horizontally */
+    flex-wrap: wrap; /* Allows items to wrap as needed */
+    gap: 20px; /* Adds space between the form and settings panel */
+    padding: 20px 0; /* Adds padding at the top and bottom to avoid touching header/footer */
+}
+
+.leftPanel {
+    /* Adjusted positioning */
+    position: relative; /* Changed from fixed to relative */
+    width: 20vw; /* Adjust width as needed */
+    height: fit-content;
+    min-width: 200px; /* Ensures the panel doesn't become too narrow */
+    background-color: #383838;
+    padding: 2vh;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 30vh;
+    overflow: auto; /* Keeps the overflow behavior */
+}
+
+.settingsPanel .setting {
+    display: flex; /* Aligns label and input horizontally */
+    align-items: center; /* Centers items vertically */
+    margin: 3vh 0;
+}
+
+.setting label {
+    flex: 1; /* Allows the label to fill the space */
+}
+
+.setting input[type="range"] {
+    flex: 2; /* Gives more space to the input */
+    margin-left: 10px; /* Adds some space between the label and the input */
+}
+
+.codeInputForm {
+    width: 60vw;
+    max-width: 800px; /* Limits the maximum width */
+}
+
+.codeInput, .codeResponse {
+    width: 100%;
+    padding: 2vh 1vw;
+    border-radius: 8px;
+}
+
+.codeInput {
+    height: 30vh; /* Adjust based on your preference */
+    margin-bottom: 2vh;
+    background-color: #383838;
+    color: white;
+    padding: 15px;
+    border: 2px solid #007bff;
+}
+
+.codeResponse {
+    background-color: #8ea47f;
+    margin-top: 2vh;
+    border: 1px solid #ccc;
+    height: 20vh;
+    color: #333;
+    min-height: 100px; /* Ensures there's enough space for the response */
+}
+
+button {
+    align-self: center; /* Centers the button in the form */
+    padding: 2vh 0;
+}
