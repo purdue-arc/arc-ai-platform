@@ -1,0 +1,69 @@
+.codeReviewTool {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topRightPanel {
+    position: fixed; /* Use fixed instead of absolute for a truly fixed position */
+    top: 20px;
+    right: 20px;
+    width: 20vw; /* Set a fixed width based on viewport width */
+    height: 30vh; /* Set a fixed height based on viewport height */
+    background-color: #383838;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: auto; /* Add scroll for small screens */
+}
+
+.settingsPanel .setting {
+    margin: 10px 0;
+}
+
+.codeInputForm {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.codeInput {
+    width: 100%;
+    height: 50vh; /* Specify a fixed height or use percentage based on the parent's height */
+    margin: 20px 0;
+    padding: 15px;
+    font-family: 'Fira Code', monospace;
+    font-size: 14px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #383838;
+    color: white; /* Adjusted for better contrast with the background */
+}
+
+button {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #0056b3; /* Adjust for a consistent hover effect */
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004080; /* Darker shade on hover */
+}
+
+.codeResponse {
+    width: 80vw; /* Adjusted to take up 80% of the viewport width */
+    min-height: 100px;
+    padding: 10px;
+    background-color: #8ea47f;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: 'Fira Code', monospace;
+    color: #333;
+    margin: 20px 0; /* Ensure there's some spacing around the response box */
+}
