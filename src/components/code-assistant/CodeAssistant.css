@@ -11,11 +11,11 @@
     position: relative; /* Changed from fixed to relative */
     width: 20vw; /* Adjust width as needed */
     min-width: 200px; /* Ensures the panel doesn't become too narrow */
-    height: auto; /* Height adjusted to content */
     background-color: #383838;
     padding: 2vh;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 20vh;
     overflow: auto; /* Keeps the overflow behavior */
 }
 
@@ -41,13 +41,13 @@
 
 .codeInput, .codeResponse {
     width: 100%;
-    margin: 0 0 20px; /* Adjusts margin for spacing */
-
+    padding: 2vh 1vw;
     border-radius: 8px;
 }
 
 .codeInput {
     height: 30vh; /* Adjust based on your preference */
+    margin-bottom: 2vh;
     background-color: #383838;
     color: white;
     padding: 15px;
@@ -56,6 +56,7 @@
 
 .codeResponse {
     background-color: #8ea47f;
+    margin-top: 2vh;
     border: 1px solid #ccc;
     height: 20vh;
     color: #333;
