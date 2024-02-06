@@ -6,23 +6,24 @@
     padding: 20px 0; /* Adds padding at the top and bottom to avoid touching header/footer */
 }
 
-.rightPanel {
+.leftPanel {
     /* Adjusted positioning */
     position: relative; /* Changed from fixed to relative */
     width: 20vw; /* Adjust width as needed */
+    height: fit-content;
     min-width: 200px; /* Ensures the panel doesn't become too narrow */
     background-color: #383838;
     padding: 2vh;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 20vh;
+    max-height: 30vh;
     overflow: auto; /* Keeps the overflow behavior */
 }
 
 .settingsPanel .setting {
     display: flex; /* Aligns label and input horizontally */
     align-items: center; /* Centers items vertically */
-    margin: 2vh 0;
+    margin: 3vh 0;
 }
 
 .setting label {
