@@ -20,7 +20,7 @@ function Header() {
           <a href="/registration">REGISTRATION</a>
         </li>
         <li className="nav-link">
-          <a href="/Arcwiki">Arc Wiki</a>
+          <a href="/arc-wiki">ARC Wiki</a>
         </li>
       </nav>
     </header>
