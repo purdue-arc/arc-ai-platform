@@ -2,41 +2,37 @@
 .landing-header {
     display: flex;
     flex-direction: row;
-    padding: 1vw;
     background: rgb(2, 14, 31);
-    align-items: center;
+    align-items: center; /* Ensures vertical centering of children */
+    z-index: 3;
+    width: 100vw;
+    height: 15vh; /* Header height */
+    padding: 0 1vw; /* Add horizontal padding if needed */
 }
 
 .landing-nav {
     list-style: none;
-    padding: 2vh 1vw;
     margin: 0;
     display: flex;
-    /* Align nav items in a row */
-    align-items: flex-end;
-    justify-content: space-between;
-    flex-direction: row;
-    height: 100%;
+    align-items: center; /* This ensures vertical centering of nav items */
+    flex-grow: 1; /* Allows the nav to fill available space */
 }
 
 .header-logo {
-    /* Adjust the size of your logo as necessary */
-    height: auto;
-    /* Example height for your logo */
-    width: 10vw;
-    align-self: center;
-    padding-right: 32vw;
+    width: 10vw; /* Logo width */
+    height: auto; /* Adjusts height automatically to maintain aspect ratio */
+    margin-right: 30vw; /* Pushes the navigation to the end of the header */
 }
 
 .nav-link {
-    /* Adjust the size of your logo as necessary */
-    height: 4vh;
-    /* Example height for your logo */
+    margin: 0 1vw; /* Spacing between links */
+    display: flex;
+    align-items: center; /* Center items vertically within the link */
 }
 
 .landing-nav ul li {
-    height: 4vw;
-    margin-left: 3vw;
+    display: inline-flex; /* Change from height adjustment to flex for better alignment */
+    align-items: center; /* Centers the link text vertically */
 }
 
 .landing-nav ul li a {
@@ -46,5 +42,8 @@
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
-    line-height: 4vw;
+    padding: 0.5vw 1vw; /* Adds padding to increase clickable area and aid alignment */
+    display: inline-flex; /* Ensures the anchor behaves like a flex item */
+    align-items: center; /* Further ensures vertical centering */
+    height: 100%; /* Full height of its container */
 }

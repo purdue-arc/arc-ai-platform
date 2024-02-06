@@ -14,7 +14,7 @@ function Header() {
       </a>
       <nav className="landing-nav">
         <li className="nav-link">
-          <a href="/about">ABOUT</a>
+          <a href="/code-assistant">CODE ASSISTANT</a>
         </li>
         <li className="nav-link">
           <a href="/registration">REGISTRATION</a>
