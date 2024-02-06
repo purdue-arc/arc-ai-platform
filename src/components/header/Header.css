@@ -1,49 +1,58 @@
-
 .landing-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    flex-direction: row;
+    align-items: center;
     background: rgb(2, 14, 31);
-    align-items: center; /* Ensures vertical centering of children */
-    z-index: 3;
-    width: 100vw;
-    height: 15vh; /* Header height */
-    padding: 0 1vw; /* Add horizontal padding if needed */
+    transition: padding 0.3s ease, background 0.3s ease; /* Ready for future opacity transition */
+    padding: 1rem 1vw;
+    z-index: 9999;
+}
+
+.header-spacer {
+    width: 100%;
+    transition: height 0.3s ease;
+}
+
+.landing-header.compact {
+    padding: 0.5rem 1vw; /* Reduced padding */
+    background: rgba(3, 15, 42); /* Slightly darker for contrast, added transparency for effect */
+    opacity: 1;
+}
+
+.header-logo, .header-logo.compact-logo {
+    transition: transform 0.3s ease; /* Transition applies to both states */
+    width: 10vw; /* Adjusted for consistency */
+}
+
+.header-logo.compact-logo {
+    transform: scale(0.8); /* Adjust scale for a subtle change */
+}
+
+.landing-nav, .nav-link {
+    display: flex;
+    align-items: center; /* Ensures vertical centering */
 }
 
 .landing-nav {
     list-style: none;
-    display: flex;
-    align-items: center; /* This ensures vertical centering of nav items */
     justify-content: flex-end;
-    margin-right: 5vw;
+    margin-left: auto; /* Corrected to push the nav to the end */
     flex-grow: 1; /* Allows the nav to fill available space */
 }
 
-.header-logo {
-    width: 10vw; /* Logo width */
-    height: auto; /* Adjusts height automatically to maintain aspect ratio */
-}
-
-.nav-link {
-    margin: 0 1vw; /* Spacing between links */
-    display: flex;
-    align-items: center; /* Center items vertically within the link */
-}
-
-.landing-nav ul li {
-    display: inline-flex; /* Change from height adjustment to flex for better alignment */
-    align-items: center; /* Centers the link text vertically */
-}
-
-.landing-nav ul li a {
-    font-family: 'Sansation', sans-serif;
-    font-size: 1vw;
+.nav-link a {
     color: #ffffff;
     text-decoration: none;
-    text-transform: uppercase;
+    margin: 0 15px;
     font-weight: bold;
-    padding: 0.5vw 1vw; /* Adds padding to increase clickable area and aid alignment */
-    display: inline-flex; /* Ensures the anchor behaves like a flex item */
-    align-items: center; /* Further ensures vertical centering */
-    height: 100%; /* Full height of its container */
+    font-size: 1vw; /* Standardized font size here */
+    padding: 0.5vw 1vw; /* Increased clickable area */
+    transition: color 0.2s ease; /* Smooth transition for hover effect */
+}
+
+.nav-link a:hover {
+    color: #a0a0a0;
 }
