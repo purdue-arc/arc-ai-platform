@@ -17,10 +17,7 @@ function Header() {
           <a href="/code-assistant">CODE ASSISTANT</a>
         </li>
         <li className="nav-link">
-          <a href="/registration">REGISTRATION</a>
-        </li>
-        <li className="nav-link">
-          <a href="/arc-wiki">ARC Wiki</a>
+          <a href="/arc-wiki">ARC WIKI</a>
         </li>
       </nav>
     </header>

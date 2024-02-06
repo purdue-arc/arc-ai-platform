@@ -12,16 +12,16 @@
 
 .landing-nav {
     list-style: none;
-    margin: 0;
     display: flex;
     align-items: center; /* This ensures vertical centering of nav items */
+    justify-content: flex-end;
+    margin-right: 5vw;
     flex-grow: 1; /* Allows the nav to fill available space */
 }
 
 .header-logo {
     width: 10vw; /* Logo width */
     height: auto; /* Adjusts height automatically to maintain aspect ratio */
-    margin-right: 30vw; /* Pushes the navigation to the end of the header */
 }
 
 .nav-link {
