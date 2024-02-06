@@ -1,0 +1,77 @@
+.chat-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #141d3f;
+  transition: background 0.5s ease-in-out;
+}
+
+.chat-background {
+  max-width: 80%;
+  margin-bottom: 20px;
+}
+
+.chat-container.no-background {
+  background: none;
+}
+
+.chat-header {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.chat-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chat-option {
+  background-color: #000000;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+}
+
+.chat-option:hover {
+  transform: scale(1.05);
+}
+
+.prompt-form {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.prompt-input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 50%;
+  max-width: 600px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.submit-button:hover {
+  background-color: #4cae4c;
+}
