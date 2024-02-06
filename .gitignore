@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 arc-ai-platform/node_modules
+node_modules
 dist
 dist-ssr
 *.local
