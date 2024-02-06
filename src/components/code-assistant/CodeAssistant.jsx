@@ -36,6 +36,7 @@ const CodeAssistant = () => {
   return (
     <>
       <Header />
+      <h1 className="title">Code Assistant</h1>
       <div className="codeReviewTool">
         <div className="leftPanel">
           <div className="settingsPanel">

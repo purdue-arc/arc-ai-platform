@@ -1,9 +1,15 @@
+.title{
+    justify-content: center;
+    text-align: center;
+    padding-top: 5vh;
+}
 .codeReviewTool {
     display: flex;
     justify-content: space-evenly; /* Aligns children (form and settings panel) horizontally */
     flex-wrap: wrap; /* Allows items to wrap as needed */
     gap: 20px; /* Adds space between the form and settings panel */
-    padding: 20px 0; /* Adds padding at the top and bottom to avoid touching header/footer */
+    padding-top: 4vh;
+    padding-bottom: 10vh; /* Adds padding at the top and bottom to avoid touching header/footer */
 }
 
 .leftPanel {
