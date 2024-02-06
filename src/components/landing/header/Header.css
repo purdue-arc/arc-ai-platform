@@ -5,6 +5,7 @@
     padding: 1vw;
     background: rgb(2, 14, 31);
     align-items: center;
+    z-index: 3;
 }
 
 .landing-nav {
