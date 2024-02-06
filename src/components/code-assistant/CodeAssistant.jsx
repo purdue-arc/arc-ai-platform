@@ -37,7 +37,7 @@ const CodeAssistant = () => {
     <>
       <Header />
       <div className="codeReviewTool">
-        <div className="rightPanel">
+        <div className="leftPanel">
           <div className="settingsPanel">
             <div className="setting">
               <label>Styling: {settings.styling}</label>
