@@ -24,6 +24,9 @@ const Chatbot = () => {
         className={`chat-container ${backgroundVisible ? "" : "no-background"}`}
       >
         {backgroundVisible && <img src={logo} alt="Background" />}
+        {!backgroundVisible && (
+          <img className="transparent-image" src={logo} alt="Background" />
+        )}
         <div className="chat-header">How can I help you today?</div>
         <div className="chat-options">
           <button className="chat-option" onClick={handlePromptSubmit}>

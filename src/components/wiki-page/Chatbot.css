@@ -15,7 +15,7 @@
 }
 
 .chat-container.no-background {
-  background: none;
+  background: transparent;
 }
 
 .chat-header {
@@ -39,6 +39,10 @@
   cursor: pointer;
   transition: transform 0.3s ease;
   border-radius: 8px;
+}
+
+.transparent-image{
+  opacity: 0%;
 }
 
 .chat-option:hover {
