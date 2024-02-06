@@ -7,6 +7,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/code-assistant" element={<CodeAssistant />} />
       </Routes>
     </BrowserRouter>
   );
