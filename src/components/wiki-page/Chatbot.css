@@ -41,7 +41,7 @@
   border-radius: 8px;
 }
 
-.transparent-image{
+.transparent-image {
   opacity: 0%;
 }
 
@@ -49,12 +49,29 @@
   transform: scale(1.05);
 }
 
-.prompt-form {
+/* .prompt-form {
   margin-top: 20px;
   width: 100%;
   display: flex;
   justify-content: center;
+} */
+.prompt-form {
+  margin-top: 20px;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2vh 1vw;
 }
+
+/* Additional CSS to ensure TextareaAutosize grows to fill the flex container */
+
+/*.prompt-form textarea {
+  flex-grow: 1; 
+  width: 90%;
+  margin: 0 auto; 
+} */
 
 .prompt-input {
   padding: 10px;
@@ -74,6 +91,7 @@
   cursor: pointer;
   border-radius: 8px;
   margin-left: 10px;
+  flex-direction: column;
 }
 
 .submit-button:hover {

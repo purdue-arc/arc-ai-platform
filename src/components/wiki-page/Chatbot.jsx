@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 import "./Chatbot.css";
 import logo from "../../assets/logo.png";
 import Footer from "../footer/Footer.jsx";
@@ -6,6 +7,7 @@ import Header from "../header/Header.jsx";
 
 const Chatbot = () => {
   const [prompt, setPrompt] = useState("");
+
   const [backgroundVisible, setBackgroundVisible] = useState(true);
 
   const handlePromptChange = (event) => {
@@ -43,12 +45,12 @@ const Chatbot = () => {
           </button>
         </div>
         <form className="prompt-form" onSubmit={handlePromptSubmit}>
-          <input
-            type="text"
+          <TextareaAutosize
+            minRows={2}
             value={prompt}
             onChange={handlePromptChange}
             placeholder="Enter your prompt..."
-            className="prompt-input"
+            style={{ width: "100%", padding: "0.5vh" }}
           />
           <button type="submit" className="submit-button">
             Send

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -76,11 +77,19 @@ const CodeAssistant = () => {
           </div>
         </div>
         <form className="codeInputForm" onSubmit={handleSubmit}>
-          <textarea
+          {/* <textarea
             className="codeInput"
             placeholder="Paste your code here..."
             value={code}
             onChange={handleCodeChange}
+          /> */}
+          <TextareaAutosize
+            className="codeInput"
+            minRows={1}
+            value={code}
+            onChange={handleCodeChange}
+            placeholder="Paste your code here..."
+            style={{ width: "100%", padding: "0.5vh"}}
           />
           <button type="submit">Get Code Advice</button>
           <div className="codeResponse">{response}</div>
