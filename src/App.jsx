@@ -4,7 +4,7 @@ import Landing from "./components/landing/Landing.jsx";
 import Chatbot from "./components/wiki-page/Chatbot.jsx";
 import "./App.css";
 import CodeAssistant from "./components/code-assistant/CodeAssistant.jsx";
-function App() {
+function App({ firebaseApp }) {
   return (
     <BrowserRouter>
       <Routes>
