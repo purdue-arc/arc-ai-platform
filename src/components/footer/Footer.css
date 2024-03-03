@@ -3,104 +3,84 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 60vh;
-    width: 100vw;
+    min-height: 300px;
+    width: 100%;
+    padding: 20px;
 }
 
 .footer-content {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: self-start;
+    align-items: flex-start;
     width: 100%;
     flex-wrap: wrap;
 }
 
-.footer-subtitle{
-    font-size : 2vw;
-    width: 20vw;
-}
-.newsletter{
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-}
-.social-media, .contact-info, .resources{
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
+.footer-section {
+    width: calc(25% - 20px); /* Adjust width for 4 columns with margin */
+    margin-right: 30px; /* Adjust margin between sections */
+    margin-bottom: 10px; /* Adjust margin between rows */
 }
 
-.social-media a {
+.footer-subtitle {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+    white-space: nowrap;
+    display: inline-block;
+    transition: padding 0.3s;
+}
+
+.social-media a, .resources a, .legal li a {
     text-decoration: none;
-    color: #444;
-    display: flex;
-    align-items: center;
+    color: #007bff;
+    transition: color 0.3s;
 }
 
-.social-media li a i {
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-}
-.contact-info p {
-    line-height: 1.5;
-}
-
-.resources a {
-    text-decoration: none;
-    color: #444;
+.social-media a:hover, .resources a:hover, .legal li a:hover {
+    color: #0056b3;
 }
 
 .newsletter form {
     display: flex;
     align-items: center;
-    width: 25vw;
+    width: 100%;
 }
 
 .newsletter input {
-    padding: 0.5rem;
+    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 3px;
+    margin-right: 10px;
     flex-grow: 1;
-    margin-right: 0.5rem;
-
 }
 
 .newsletter button {
-    padding: 0.5rem 1rem;
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
 }
 
 .copyright {
     text-align: center;
-    margin-top: 2rem;
-    font-size: 0.8rem;
+    margin-top: 20px;
+    font-size: 12px;
     color: #999;
 }
 
 .legal {
     display: flex;
-    justify-content: center; /* Center the legal links */
-    width: 100%; /* Full width */
-    margin-top: 0rem; /* Space from the content above */
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
 }
 
 .legal li {
-    display: flex;
-    justify-content: center;
-    margin: 9 0.5rem;
+    margin: 0 10px;
 }
-
-.legal li a {
-    text-decoration: none;
-    color: #999;
-}
-
-
-/* You can add additional styles for hover effects, different color schemes, etc. */
-
-
