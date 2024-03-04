@@ -14,25 +14,26 @@
 }
 
 .chat-header {
-  font-size: 24px;
+  font-size: 6vh; /* Adjust font size using vh */
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 4vh; /* Adjust margin using vh */
+  padding-bottom: 2vh; /* Adjust padding using vh */
 }
 
 .chat-options {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 2vh; /* Adjust gap using vh */
 }
 
 .chat-option {
   background-color: #000000 !important;
   border: none;
-  padding: 10px; 
-  font-size: 14px; 
+  padding: 2vh; 
+  font-size: 2.5vh; /* Adjust font size using vh */
   cursor: pointer;
   transition: transform 0.3s ease;
-  border-radius: 8px;
+  border-radius: 2vh;
 }
 
 .chat-option:hover {
@@ -40,8 +41,8 @@
 }
 
 .prompt-form {
-  margin-top: 20px;
-  width: 100%;
+  margin-top: 4vh; /* Adjust margin using vh */
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,27 +53,26 @@
 }
 
 .prompt-input {
-  padding: 16px; /* Increased padding */
-  font-size: 16px; /* Increased font size */
-  border-radius: 8px;
+  padding: 2vh; 
+  font-size: 2.5vh; 
+  border-radius: 2vh;
   background-color: rgb(96, 101, 101);
   border: 1px solid #242424;
-  width: 100%;
-  min-width: 40vw !important;
-  margin-bottom: 10px;
+  width: 50vw; /* Adjust width using vw */
+  max-width: 50vw; /* Adjust max-width using vw */
+  margin-bottom: 4vh; /* Adjust margin using vh */
 }
 
-
 .submit-button {
-  padding: 12px 15px; 
-  font-size: 14px; 
+  padding: 2vh 3vh; /* Adjust padding using vh */
+  font-size: 2.5vh; 
   border: none;
   background-color: #5cb85c !important;
   color: white;
   cursor: pointer;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 8px;
+  width: 30vw; /* Adjust width using vw */
+  max-width: 60vw; /* Adjust max-width using vw */
+  border-radius: 2vh;
 }
 
 .submit-button:hover {
