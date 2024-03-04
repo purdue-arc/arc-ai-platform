@@ -17,7 +17,10 @@ function App() {
       setDialogOpen(true); // If no user_id cookie, open sign-in dialog
     }
   }, []);
-
+  const handleClose = (event, reason) => {
+    if (reason && reason === "backdropClick") return;
+    setDialogOpen(false);
+  };
   return (
     <div className={dialogOpen ? "blur-background" : ""}>
       <BrowserRouter>
@@ -27,7 +30,7 @@ function App() {
           <Route path="/code-assistant" element={<CodeAssistant />} />
         </Routes>
       </BrowserRouter>
-      <SignInDialog open={dialogOpen} onClose={() => setDialogOpen(false)} />
+      <SignInDialog open={dialogOpen} onClose={handleClose} />
     </div>
   );
 }
