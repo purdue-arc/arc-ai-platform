@@ -18,7 +18,7 @@ const Chatbot = () => {
   }, []);
 
   const getData = () => {
-    // Set the hint data with the desired options
+    // potential could use ai to generate this array?
     const hintArray = [
       "Tell me about ARC",
       "Tell me about ARC's goals",
