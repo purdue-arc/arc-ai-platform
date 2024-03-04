@@ -1,39 +1,38 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
+import ScrollContext from "../../ScrollContext.js";
 import arcLogo from "../../assets/logo.png";
 import "./Header.css";
 
 function Header() {
-  const [isCompact, setIsCompact] = useState(false); // State to track compact mode
-  const headerRef = useRef(null); // Reference to the header element
+  const { scrollY } = useContext(ScrollContext);
+  const [isCompact, setIsCompact] = useState(false);
+  const headerRef = useRef(null);
 
   useEffect(() => {
-    // Function to adjust the spacer's height only once
+    // Adjust the spacer's height based on the header's height
     const setInitialSpacerHeight = () => {
-      const headerHeight = headerRef.current.offsetHeight + "px"; // Get the initial header height
-      document.documentElement.style.setProperty(
-        "--header-height",
-        headerHeight,
-      );
+      if (headerRef.current) {
+        const headerHeight = headerRef.current.offsetHeight + "px";
+        document.documentElement.style.setProperty(
+          "--header-height",
+          headerHeight,
+        );
+      }
     };
 
-    // Set the spacer height on initial render
     setInitialSpacerHeight();
-
-    // Adjust spacer height on resize
     window.addEventListener("resize", setInitialSpacerHeight);
 
-    // Scroll listener to toggle compact header class
-    const handleScroll = () => {
-      setIsCompact(window.scrollY > 100);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
+    // Cleanup
     return () => {
       window.removeEventListener("resize", setInitialSpacerHeight);
-      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    // Use the scrollY value from context to toggle compact mode
+    setIsCompact(scrollY > 100);
+  }, [scrollY]);
 
   return (
     <>
