@@ -9,11 +9,6 @@
   transition: background 0.5s ease-in-out;
 }
 
-.chat-background {
-  max-width: 80%;
-  margin-bottom: 20px;
-}
-
 .chat-container.no-background {
   background: transparent;
 }
@@ -26,7 +21,6 @@
 
 .chat-options {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
 }
@@ -35,14 +29,10 @@
   background-color: #000000 !important;
   border: none;
   padding: 10px; 
-  font-size: 14px; /* Decreased font size */
+  font-size: 14px; 
   cursor: pointer;
   transition: transform 0.3s ease;
   border-radius: 8px;
-}
-
-.transparent-image {
-  opacity: 0%;
 }
 
 .chat-option:hover {
@@ -57,50 +47,38 @@
   align-items: center;
 }
 
-.prompt-input {
-  padding: 8px; /* Decreased padding */
-  font-size: 14px; /* Decreased font size */
-  border-radius: 8px;
-  background-color: rgb(96, 101, 101);
-  border: 1px solid #ddd;
-  width: 70%; /* Adjusted width */
-  max-width: 400px; /* Decreased max width */
-  margin-bottom: 10px; /* Adjusted margin */
+.prompt-container {
+  position: relative;
 }
 
+.prompt-input {
+  padding: 16px; /* Increased padding */
+  font-size: 16px; /* Increased font size */
+  border-radius: 8px;
+  background-color: rgb(96, 101, 101);
+  border: 1px solid #242424;
+  width: 100%;
+  min-width: 40vw !important;
+  margin-bottom: 10px;
+}
+
+
 .submit-button {
-  padding: 8px 15px; /* Decreased padding */
-  font-size: 14px; /* Decreased font size */
+  padding: 12px 15px; 
+  font-size: 14px; 
   border: none;
   background-color: #5cb85c !important;
   color: white;
   cursor: pointer;
-  width: 30%;
+  width: 100%;
+  max-width: 400px;
   border-radius: 8px;
-  margin-left: 0; /* Removed left margin */
 }
 
 .submit-button:hover {
   background-color: #4cae4c !important;
 }
 
-.auto-fill-suggestion {
-  position: absolute;
-  color: rgb(139, 139, 139); /* Set the color to light gray */
-  font-size: 0.9em; /* Adjust font size if necessary */
-  margin-top: 8px; /* Adjust vertical position */
-  margin-left: 12px; /* Adjust horizontal position */
-  left: 0;
+.transparent-image {
+  opacity: 0%;
 }
-
-.prompt-input {
-  padding-top: 12px; /* Adjust as necessary to vertically center the text */
-  padding-bottom: 12px; /* Adjust as necessary to vertically center the text */
-}
-
-.prompt-container {
-  position: relative;
-}
-
-
-

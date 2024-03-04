@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Container, CssBaseline, TextField, Typography, Button } from "@mui/material";
-import axios from "axios";
+import { Typography, Button } from "@mui/material";
 import { Hint } from "react-autocomplete-hint";
+import axios from "axios";
 import "./Chatbot.css"; // Make sure to include your original CSS file
 import logo from "../../assets/logo.png";
 import Footer from "../footer/Footer.jsx";
 import Header from "../header/Header.jsx";
-
-//MUST IMPORT AXIOS AND react-autocomplete-hint with NPM
 
 const Chatbot = () => {
   const [prompt, setPrompt] = useState("");
@@ -21,10 +19,12 @@ const Chatbot = () => {
 
   const getData = () => {
     // Set the hint data with the desired options
-    const hintArray = ["Tell me about ARC", 
-                        "Tell me about ARC's goals", 
-                        "What is RISE", 
-                        "How can I join RISE"];
+    const hintArray = [
+      "Tell me about ARC",
+      "Tell me about ARC's goals",
+      "What is RISE",
+      "How can I join RISE"
+    ];
     setHintData(hintArray);
   };
 
@@ -67,7 +67,7 @@ const Chatbot = () => {
           </Button>
         </div>
         <form className="prompt-form" onSubmit={handlePromptSubmit}>
-          <div className="prompt-container" style={{ position: "relative" }}>
+          <div className="prompt-container">
             <Hint options={hintData} allowTabFill>
               <input
                 className="prompt-input"
