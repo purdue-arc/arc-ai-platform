@@ -1,8 +1,7 @@
 
 
 .landing-content {
-    background-image: url(../../assets/ai.png);
-    background-color: #141d3f;
+    background-color: transparent;
     color: #fff;
     text-align: center;
     width: 100vw;
@@ -10,5 +9,12 @@
     padding: 0;
     margin: 0;
 }
+
+.landing-bg{
+    background-image: url(../../assets/ai.png);
+    background-size: 200vh;
+    height: 2455px;
+}
+
 
 /* ... styles for other sections */
