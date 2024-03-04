@@ -57,8 +57,10 @@
   align-items: center;
 }
 
-.prompt-container {
-  position: relative;
+.prompt-container:hover .rah-hint-wrapper,
+.prompt-container:focus-within .rah-hint-wrapper {
+  transform: scale(1.1) translateX(2vw);
+  transition: ease-in-out 0.3s;
 }
 
 .prompt-input {
@@ -72,15 +74,16 @@
   max-width: 50vw; /* Adjust max-width using vw */
   margin-bottom: 4vh; /* Adjust margin using vh */
 }
+
 .prompt-input:hover , .prompt-input:focus {
   outline: none;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 0 2px #5cb85c;
-  transform: scale(1.1) translateX(-15px);
-  transition: ease-in-out 0.3s;
-
-  
+  transform: scale(1.1) translateX(2vw);
+  transition: ease-in-out 0.3s; 
 }
+
+
 
 .submit-button {
   padding: 2vh 3vh; /* Adjust padding using vh */
