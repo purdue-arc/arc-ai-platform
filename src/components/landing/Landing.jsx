@@ -10,14 +10,12 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 function Landing() {
   return (
     <div>
-      <Parallax pages={2} style={{ top: "0", left: "0" }}>
-        <ParallaxLayer offset={0} speed={1} style={{ zIndex: 1 }}>
-          <Header />
-        </ParallaxLayer>
+      <Header />
+      <Parallax pages={2} style={{ top: "5vh", left: "0" }}>
         <ParallaxLayer offset={0} speed={0.5} style={{ zIndex: -1 }}>
           <div className="landing-bg"></div>
         </ParallaxLayer>
-        <ParallaxLayer offset={0.15} speed={1} style={{ zIndex: 0 }}>
+        <ParallaxLayer offset={0} speed={1} style={{ zIndex: 0 }}>
           <div className="landing-content">
             <HeroSection />
             <FeaturesSection />
