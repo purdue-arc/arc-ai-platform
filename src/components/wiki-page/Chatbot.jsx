@@ -1,5 +1,8 @@
-import React, { useState } from "react";
-import "./Chatbot.css";
+import React, { useState, useEffect, useRef } from "react";
+import { Typography, Button } from "@mui/material";
+import { Hint } from "react-autocomplete-hint";
+import axios from "axios";
+import "./Chatbot.css"; // Make sure to include your original CSS file
 import logo from "../../assets/logo.png";
 import Footer from "../footer/Footer.jsx";
 import Header from "../header/Header.jsx";
@@ -7,6 +10,23 @@ import Header from "../header/Header.jsx";
 const Chatbot = () => {
   const [prompt, setPrompt] = useState("");
   const [backgroundVisible, setBackgroundVisible] = useState(true);
+  const [hintData, setHintData] = useState([]);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    // potential could use ai to generate this array?
+    const hintArray = [
+      "Tell me about ARC",
+      "Tell me about ARC's goals",
+      "What is RISE",
+      "How can I join RISE"
+    ];
+    setHintData(hintArray);
+  };
 
   const handlePromptChange = (event) => {
     setPrompt(event.target.value);
@@ -17,42 +37,51 @@ const Chatbot = () => {
     setBackgroundVisible(false);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Tab") {
+      event.preventDefault(); // Prevent default tab behavior
+    }
+  };
+
   return (
     <>
       <Header />
-      <div
-        className={`chat-container ${backgroundVisible ? "" : "no-background"}`}
-      >
+      <div className={`chat-container ${backgroundVisible ? "" : "no-background"}`}>
         {backgroundVisible && <img src={logo} alt="Background" />}
-        {!backgroundVisible && (
-          <img className="transparent-image" src={logo} alt="Background" />
-        )}
-        <div className="chat-header">How can I help you today?</div>
+        {!backgroundVisible && <img className="transparent-image" src={logo} alt="Background" />}
+        <Typography variant="h5" className="chat-header">
+          How can I help you today?
+        </Typography>
         <div className="chat-options">
-          <button className="chat-option" onClick={handlePromptSubmit}>
+          <Button variant="contained" onClick={handlePromptSubmit} className="chat-option">
             Tell me about ARC
-          </button>
-          <button className="chat-option" onClick={handlePromptSubmit}>
+          </Button>
+          <Button variant="contained" onClick={handlePromptSubmit} className="chat-option">
             Tell me about ARC's goals
-          </button>
-          <button className="chat-option" onClick={handlePromptSubmit}>
+          </Button>
+          <Button variant="contained" onClick={handlePromptSubmit} className="chat-option">
             What is RISE
-          </button>
-          <button className="chat-option" onClick={handlePromptSubmit}>
+          </Button>
+          <Button variant="contained" onClick={handlePromptSubmit} className="chat-option">
             How can I join RISE
-          </button>
+          </Button>
         </div>
         <form className="prompt-form" onSubmit={handlePromptSubmit}>
-          <input
-            type="text"
-            value={prompt}
-            onChange={handlePromptChange}
-            placeholder="Enter your prompt..."
-            className="prompt-input"
-          />
-          <button type="submit" className="submit-button">
+          <div className="prompt-container">
+            <Hint options={hintData} allowTabFill>
+              <input
+                className="prompt-input"
+                value={prompt}
+                onChange={handlePromptChange}
+                onKeyDown={handleKeyDown}
+                inputRef={inputRef}
+                placeholder="Enter your prompt..."
+              />
+            </Hint>
+          </div>
+          <Button type="submit" variant="contained" className="submit-button">
             Send
-          </button>
+          </Button>
         </form>
       </div>
       <Footer />
