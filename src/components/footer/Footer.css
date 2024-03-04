@@ -10,17 +10,15 @@
 
 .footer-content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .footer-section {
     width: calc(25% - 20px); /* Adjust width for 4 columns with margin */
-    margin-right: 30px; /* Adjust margin between sections */
-    margin-bottom: 10px; /* Adjust margin between rows */
+    margin: 0 15px; /* Adjust margin between sections */
+    margin-bottom: 20px; /* Adjust margin between rows */
 }
 
 .footer-subtitle {
@@ -40,22 +38,46 @@
     transition: color 0.3s;
 }
 
+.resources a {
+    display: block; /* Display links as block elements */
+    text-decoration: none;
+    color: #007bff;
+    margin-bottom: 1vh; /* Adjust margin between links */
+}
+
+.social-media a {
+    display: block; /* Display social media links as block elements */
+    text-decoration: none;
+    color: #007bff;
+    margin-bottom: 1vh; 
+}
+
+.contact-details p {
+    margin-bottom: 1vh; 
+}
+
 .social-media a:hover, .resources a:hover, .legal li a:hover {
     color: #0056b3;
 }
 
+.newsletter {
+    width: 100%; 
+    margin-top: 1vh; 
+    padding-bottom: 1vh;
+}
+
 .newsletter form {
     display: flex;
-    align-items: center;
-    width: 100%;
+    flex-direction: column; /* Display form items in a column */
+    width: 100%; /* Ensure the form takes up the full width */
 }
 
 .newsletter input {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 3px;
-    margin-right: 10px;
-    flex-grow: 1;
+    margin-bottom: 10px; /* Adjust margin between input and button */
+    width: 100%; /* Make the input box take up the full width */
 }
 
 .newsletter button {
@@ -65,7 +87,9 @@
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    width: 100%; /* Make the button take up the full width */
 }
+
 
 .copyright {
     text-align: center;
