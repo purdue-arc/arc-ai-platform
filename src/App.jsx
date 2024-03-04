@@ -12,6 +12,7 @@ function App() {
 
   useEffect(() => {
     const userId = Cookies.get("user_id");
+    console.log("user_id retrieved from cookie with value: " + userId);
     if (!userId) {
       setDialogOpen(true); // If no user_id cookie, open sign-in dialog
     }
