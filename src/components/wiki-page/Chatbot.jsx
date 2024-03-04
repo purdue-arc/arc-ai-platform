@@ -47,7 +47,7 @@ const Chatbot = () => {
     <>
       <Header />
       <div className={`chat-container ${backgroundVisible ? "" : "no-background"}`}>
-        {backgroundVisible && <img src={logo} alt="Background" />}
+        {backgroundVisible && <img className="logo" src={logo} alt="Background" />}
         {!backgroundVisible && <img className="transparent-image" src={logo} alt="Background" />}
         <Typography variant="h5" className="chat-header">
           How can I help you today?
