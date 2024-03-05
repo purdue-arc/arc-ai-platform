@@ -1,63 +1,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* Base Styles */
 .features-section {
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding-left: 15vw;
-    width: 70vw;
-    background-color: transparent; /* Dark background for contrast */
-    color: #fff; /* White text color */
+    padding: 4rem 15vw; /* Maintain centered content with padding */
+    max-width: 70vw; /* Limit width */
+    background-color: transparent;
+    color: #fff;
     font-family: 'Poppins', sans-serif;
 }
 
 .features-section h2 {
-    font-size: calc(1.7vh + 1.7vw);
+    font-size: calc(2rem + 1vw); /* Responsive title size */
     font-weight: 700;
-    margin-bottom: 2rem;
-    text-shadow: 4px 4px 10px rgba(0,0,0,0.8); /* Heavier text shadow for the title */
+    margin-bottom: 3rem; /* Spacing below the title */
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
 }
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    padding: 2rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; /* Optimized gap for all sizes */
+    width: 100%;
 }
 
 .feature-card {
-    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #1e1e1e; /* Slightly lighter dark shade for card */
+    padding: 1rem; /* Minimized padding for tighter fit */
+    background-color: #1e1e1e;
     border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Heavier drop shadow for depth and focus */
 }
 
 .feature-card:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.6); /* Even more pronounced shadow on hover */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.6);
 }
 
-.feature-card h3 {
-    font-size: 1.5rem; /* Larger font size for titles within cards */
-    font-weight: 700;
-    margin: 1rem 0;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.8); /* Apply shadow to text for consistency */
-}
-
-.feature-card p {
-    font-size: 1rem; /* Adjusted for better readability */
-    font-weight: 400;
-    text-align: center;
-    color: #a5a5a5; /* Light grey text for readability */
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.6); /* Subtle shadow for depth */
+.feature-card h3, .feature-card p {
+    font-size: 0.8rem; /* Reduced font size for small screens */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
 }
 
 .feature-card svg {
-    font-size: 60px; /* Slightly larger icons for visual impact */
-    color: #fff; /* White icon for contrast */
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6); /* Shadow for icons to enhance visibility */
+    font-size: 35px; /* Reduced icon size for small screens */
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* Very Small Screens */
+@media (max-width: 599px) {
+    .features-grid {
+        gap: 1rem; /* Reduced gap */
+    }
+    .feature-card {
+        /* Calculating height to fit 9 cards within 150vh including gap and section padding */
+        min-height: calc((150vh - 8rem - (8 * 1rem)) / 9);
+    }
+}
+
+/* Small to Medium Screens - 2 column layout */
+@media (min-width: 600px) and (max-width: 899px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns layout */
+        gap: 1.5rem;
+    }
+    .feature-card {
+        /* Adjusting height to fit 5 cards in 2 columns within 150vh, considering gap */
+        min-height: calc((150vh - 8rem - (4 * 1.5rem)) / 5);
+    }
+}
+
+/* Larger Screens */
+@media (min-width: 900px) {
+    .features-section {
+        padding: 4rem 15vw;
+    }
+    .features-grid {
+        gap: 2rem; /* Increased gap for readability and aesthetics */
+        grid-template-columns: repeat(3, 1fr); /* Enforcing 3 columns layout */
+    }
+    .feature-card {
+        /* Adjusted for improved aesthetics and spacing, not strictly height-bound */
+        padding: 2rem;
+        min-height: 260px; /* Adjusted for larger displays */
+        font-size: 1.1rem;
+    }
+    .feature-card svg {
+        font-size: 60px;
+    }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+    .features-grid {
+        gap: 2.5rem; /* Maximum spacing */
+    }
+    /* Optional further adjustments for extra large screens */
 }
