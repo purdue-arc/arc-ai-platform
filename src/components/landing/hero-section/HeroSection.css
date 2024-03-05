@@ -3,10 +3,10 @@
 .hero-section {
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     color: #fff;
 }

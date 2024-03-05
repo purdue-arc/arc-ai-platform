@@ -1,22 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Base Styles */
 .features-section {
-    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    height: 30vh;
+    padding: 4rem 15vw; /* Maintain centered content with padding */
+    max-width: 70vw; /* Limit width */
+    background-color: transparent;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.features-section h2 {
+    font-size: calc(2rem + 1vw); /* Responsive title size */
+    font-weight: 700;
+    margin-bottom: 3rem; /* Spacing below the title */
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.8);
 }
 
 .features-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem; /* Optimized gap for all sizes */
+    width: 100%;
 }
 
 .feature-card {
-    padding: 2rem;
-    margin: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem; /* Minimized padding for tighter fit */
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
 }
 
-.feature-card img {
-    margin-bottom: 1rem;
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+.feature-card h3, .feature-card p {
+    font-size: 0.8rem; /* Reduced font size for small screens */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    margin-block: 0;
+    margin: 1vh 0;
+}
+.feature-card svg{
+    font-size: 48px;
+}
+.icon{
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+/* Very Small Screens */
+@media (max-width: 594px) {
+    .feature-card svg{
+        font-size: 18px;
+    }
+    .features-grid {
+        gap: 1rem; /* Reduced gap */
+    }
+    .feature-card {
+        /* Calculating height to fit 9 cards within 150vh including gap and section padding */
+        height: 15vh;
+        flex-direction: row;
+        gap: 2vh;
+        padding: 0 3vw;
+    }
+    .feature-card p {
+        font-size: 0.6rem;
+    }
+}
+
+/* Small to Medium Screens - 2 column layout */
+@media (min-width: 595px) and (max-width: 899px) {
+    .feature-card svg{
+        font-size: 24px;
+    }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns layout */
+        gap: 1.5rem;
+    }
+    .feature-card {
+        /* Calculating height to fit 9 cards within 150vh including gap and section padding */
+        height: 26vh;
+        gap: 0;
+    }
+    .feature-card p {
+        font-size: 0.8rem;
+        padding: 1vh 0;
+    }
+    .feature-card h3 {
+        font-size: 1rem;
+    }
+}
+
+/* Larger Screens */
+@media (min-width: 900px) {
+    .feature-card svg{
+        font-size: 32px;
+    }
+    .features-section {
+        padding: 4rem 15vw;
+    }
+    .features-grid {
+        gap: 2rem; /* Increased gap for readability and aesthetics */
+        grid-template-columns: repeat(3, 1fr); /* Enforcing 3 columns layout */
+    }
+    .feature-card {
+        /* Adjusted for improved aesthetics and spacing, not strictly height-bound */
+        padding: 2rem;
+        min-height: 260px; /* Adjusted for larger displays */
+    }
+    .feature-card p {
+        font-size: 1rem;
+        padding: 1vh 0;
+    }
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1200px) {
+    .feature-card svg{
+        font-size: 48px;
+    }
+    .features-grid {
+        gap: 2.5rem; /* Maximum spacing */
+    }
+    .feature-card p {
+        font-size: 1.2rem;
+        padding: 1vh 0;
+    }
+    .feature-card h3 {
+        font-size: 1.4rem;
+    }
+    /* Optional further adjustments for extra large screens */
 }
