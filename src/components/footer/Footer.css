@@ -3,110 +3,55 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 50vh;
+    height: 50vh; /* Adjusted to 50vh */
     width: 100%;
-    padding: 3vw; /* Adjusted padding using viewport width */
+    padding: 2vh 0; /* Adjusted padding for better spacing */
+    overflow: auto; /* Added to allow scrolling within the footer if content exceeds 50vh */
 }
 
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
+    height: auto; /* Adjusted to auto to accommodate variable content height */
+    max-height: 45vh; /* Ensures content does not exceed the footer's height including padding */
+    overflow: hidden; /* Hide overflow to maintain the footer's height constraint */
 }
 
 .footer-section {
-    width: calc(25% - 2vw); /* Adjusted width using viewport width */
-    margin: 0 1.5vw; /* Adjusted margin using viewport width */
-    margin-bottom: 3vw; /* Adjusted margin between rows using viewport width */
+    width: calc(25% - 2vw);
+    margin: 1vh 1vw; /* Slightly reduced margin to save space */
+    overflow: hidden; /* Hide overflow to ensure content fits within each section */
 }
 
-.footer-subtitle {
-    font-size: 1.5vw; /* Adjusted font size using viewport width */
-    font-weight: bold;
-    background-color: #333;
-    color: #fff;
-    border-radius: 8px;
-    white-space: nowrap;
-    display: inline-block;
-    padding: 1vw; /* Adjusted padding using viewport width */
-    transition: padding 0.3s;
+.footer-subtitle, .social-media a, .resources a, .legal li a, .newsletter input, .newsletter button {
+    font-size: 0.9vw; /* Adjust font size for better fit */
 }
 
-.social-media a, .resources a, .legal li a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s;
+/* Adjust the rest of your CSS similarly to ensure that content fits well within the new 50vh constraint */
+
+/* It's also a good idea to add media queries to adjust layout and sizes for smaller screens */
+
+@media (max-width: 768px) {
+    .footer-section {
+        width: 50%; /* Adjust for better readability on small screens */
+    }
+
+    .footer-subtitle, .social-media a, .resources a, .legal li a, .newsletter input, .newsletter button {
+        font-size: 2.5vw; /* Increase font size for readability on small screens */
+    }
+
+    /* Adjust other elements as necessary for a responsive design */
 }
 
-.resources a, .social-media a {
-    display: block;
-    text-decoration: none;
-    color: #007bff;
-    margin-bottom: 1vh;
+.newsletter input, .newsletter button {
+    width: 100%; /* Ensures input/button do not overflow their container */
+    max-width: 100%; /* Prevents the elements from extending beyond their parent */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
 }
 
-.contact-details p {
-    margin-bottom: 1vh;
-}
-
-.social-media a:hover, .resources a:hover, .legal li a:hover {
-    color: #0056b3;
-}
-
-.newsletter {
-    width: 100%;
-    margin-top: 1vh;
-    padding-bottom: 1vh;
-}
-
-.newsletter form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.newsletter input {
-    padding: 1vw; /* Adjusted padding using viewport width */
-    border: 0.1vw solid #ddd; /* Adjusted border using viewport width */
-    border-radius: 0.5vw; /* Adjusted border radius using viewport width */
-    margin-bottom: 1.5vw; /* Adjusted margin between input and button using viewport width */
-    width: 100%;
-}
-
-.newsletter button {
-    padding: 1vw 2vw; /* Adjusted padding using viewport width */
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 0.5vw;
-    cursor: pointer;
-    width: 100%;
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 3vw; /* Adjusted margin using viewport width */
-    font-size: 1vw; /* Adjusted font size using viewport width */
-    color: #999;
-}
-
-.legal {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 1.5vw; /* Adjusted margin using viewport width */
-}
-
-.legal li {
-    margin: 0 1.5vw; 
-}
-
-.footer-section:nth-child(4) {
-    margin-left: 12vw; 
-    margin-right: auto; 
-}
-
-.newsletter input[type="email"] {
-    width: 150%;
+@media (max-width: 768px) {
+    .newsletter input, .newsletter button {
+        font-size: 4vw; /* Adjusts font size for better readability on smaller screens */
+    }
 }
