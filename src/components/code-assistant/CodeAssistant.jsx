@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
+import ScrollDetector from "../../ScrollDetector.jsx";
+import { useScrollContext } from "../../ScrollContext.jsx";
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -11,6 +13,7 @@ const CodeAssistant = () => {
     codeStyle: 50,
     efficiency: 50,
   });
+  const { updateScrollState } = useScrollContext();
 
   const handleCodeChange = (event) => {
     setCode(event.target.value);
@@ -36,6 +39,11 @@ const CodeAssistant = () => {
   return (
     <>
       <Header />
+      <ScrollDetector
+        onVisibilityChange={(isVisible) =>
+          updateScrollState({ isCompact: isVisible })
+        }
+      />
       <body class="assistant">
         <h1 className="title">Code Assistant</h1>
         <div className="codeReviewTool">
@@ -83,7 +91,9 @@ const CodeAssistant = () => {
               value={code}
               onChange={handleCodeChange}
             />
-            <button className="getAdvice"type="submit">Get Code Advice</button>
+            <button className="getAdvice" type="submit">
+              Get Code Advice
+            </button>
             <div className="codeResponse">{response}</div>
           </form>
         </div>
