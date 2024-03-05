@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
+import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
 import ScrollDetector from "../../ScrollDetector.jsx";
 import { useScrollContext } from "../../ScrollContext.jsx";
 
@@ -13,6 +14,7 @@ const CodeAssistant = () => {
     codeStyle: 50,
     efficiency: 50,
   });
+  const [showGraphs, setShowGraphs] = useState(false); // State to track whether to show graphs or not
   const { updateScrollState } = useScrollContext();
 
   const handleCodeChange = (event) => {
@@ -33,6 +35,7 @@ const CodeAssistant = () => {
     console.log("Settings:", settings);
     // Simulate a response for demonstration
     setResponse("Your code has been analyzed. Here's some advice...");
+    setShowGraphs(true); // Set the state to show graphs after submission
     // In a real application, you'd send the code and settings to a server for analysis and display the response here
   };
 
@@ -44,7 +47,7 @@ const CodeAssistant = () => {
           updateScrollState({ isCompact: isVisible })
         }
       />
-      <body class="assistant">
+      <body className="assistant">
         <h1 className="title">Code Assistant</h1>
         <div className="codeReviewTool">
           <div className="leftPanel">
@@ -96,6 +99,13 @@ const CodeAssistant = () => {
             </button>
             <div className="codeResponse">{response}</div>
           </form>
+          {showGraphs && ( 
+            <div className="graphsContainer">
+              <div className="graph">
+                <CodeStyleGraph/>
+              </div>
+            </div>
+          )}
         </div>
       </body>
 

@@ -74,3 +74,9 @@ button {
     align-self: center; /* Centers the button in the form */
     padding: 2vh 0;
 }
+
+.graphsContainer {
+    display: inline-flex;
+    justify-content: center; /* Center the graphs horizontally */
+    gap: 20px; /* Add some gap between the graphs */
+  }
