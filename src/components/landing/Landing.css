@@ -1,7 +1,7 @@
 
 
 .landing-content {
-    background-color: #141d3f;
+    background-color: transparent;
     color: #fff;
     text-align: center;
     width: 100vw;
@@ -10,4 +10,51 @@
     margin: 0;
 }
 
-/* ... styles for other sections */
+.background-full-screen {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    height: 250vh;
+    width: 100vw;
+    overflow: hidden;
+    position: fixed; /* Cover the entire viewport */
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure it stays as a background */
+}
+
+.bg-block {
+    width: 100vw;
+    height: 250vh;
+    background-image: url('../../assets/ai.png'); /* Your image path */
+    background-size: cover;
+    background-position: center;
+}
+
+.flip-horizontal {
+    transform: scaleX(-1);
+}
+
+.flip-vertical {
+    transform: scaleY(-1);
+}
+
+.flip-both {
+    transform: scaleX(-1) scaleY(-1);
+}
+
+
+.landing-bg-cover{
+    background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0) 50%, /* Middle is transparent */
+            rgba(0, 0, 0, 0.9) 100%
+    );
+    height: 100vh;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+}

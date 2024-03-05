@@ -5,12 +5,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #141d3f;
-  transition: background 0.5s ease-in-out;
+  background-image: url(../../assets/wiki.png);
+  background-size: cover;
 }
 
 .chat-container.no-background {
-  background: transparent;
+  background-color: transparent;
+  
 }
 
 .chat-header {
@@ -36,6 +37,14 @@
   border-radius: 2vh;
 }
 
+.logo {
+  filter:drop-shadow(20px 20px 20px #000000);
+}
+
+.transparent-image{
+  opacity: 0%;
+}
+
 .chat-option:hover {
   transform: scale(1.05);
 }
@@ -56,11 +65,21 @@
   padding: 2vh; 
   font-size: 2.5vh; 
   border-radius: 2vh;
-  background-color: rgb(96, 101, 101);
+  background-color: rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(10px);
   border: 1px solid #242424;
   width: 50vw; /* Adjust width using vw */
   max-width: 50vw; /* Adjust max-width using vw */
   margin-bottom: 4vh; /* Adjust margin using vh */
+}
+.prompt-input:hover , .prompt-input:focus {
+  outline: none;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 2px #5cb85c;
+  transform: scale(1.1) translateX(-15px);
+  transition: ease-in-out 0.3s;
+
+  
 }
 
 .submit-button {
@@ -70,9 +89,10 @@
   background-color: #5cb85c !important;
   color: white;
   cursor: pointer;
-  width: 30vw; /* Adjust width using vw */
-  max-width: 60vw; /* Adjust max-width using vw */
-  border-radius: 2vh;
+  border-radius: 8px;
+  margin-left: 10px;
+  
+
 }
 
 .submit-button:hover {

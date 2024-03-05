@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 .hero-section {
     background-size: cover;
     background-position: center;
@@ -25,16 +27,21 @@
 }
 
 .hero-text-container h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
+    font-size: calc(2.5vw + 2.5vh); /* Responsive size */
+    font-weight: 700; /* Poppins supports various weights */
     margin-bottom: 1rem;
+    text-shadow: 8px 8px 10px rgba(0,0,0,0.6); /* Subtle shadow */
+    font-family: 'Poppins', sans-serif; /* Modern, geometric font */
 }
 
 .hero-text-container p {
-    font-size: 1.2rem;
+    font-size: calc(1vw + 1vh); /* Responsive size */
     line-height: 1.5;
     max-width: 700px;
     margin: 0 auto;
+    font-family: 'Poppins', sans-serif; /* Consistency in font choice */
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.6);
+    color: #fff; /* White color for better contrast on darker backgrounds */
 }
 
 .hero-section a {
@@ -43,10 +50,15 @@
     padding: 1rem 2rem;
     border: none;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: 1.2rem; /* Consider making this responsive as well */
     cursor: pointer;
     margin-top: 1rem;
+    font-family: 'Poppins', sans-serif; /* Maintain font consistency */
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.4); /* Button shadow for depth */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
 }
 
-/* You can add additional styles for animations, text shadows, etc. */
-
+.hero-section a:hover {
+    background-color: #0056b3; /* Slightly darker shade on hover */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3); /* Enhanced shadow on hover */
+}
