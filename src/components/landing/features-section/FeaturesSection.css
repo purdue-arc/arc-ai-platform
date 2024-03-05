@@ -46,39 +46,64 @@
 .feature-card h3, .feature-card p {
     font-size: 0.8rem; /* Reduced font size for small screens */
     text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    margin-block: 0;
+    margin: 1vh 0;
 }
-
-.feature-card svg {
-    font-size: 35px; /* Reduced icon size for small screens */
-    color: #fff;
+.feature-card svg{
+    font-size: 48px;
+}
+.icon{
     margin-bottom: 0.5rem;
+    color: #fff;
 }
-
 /* Very Small Screens */
-@media (max-width: 599px) {
+@media (max-width: 594px) {
+    .feature-card svg{
+        font-size: 18px;
+    }
     .features-grid {
         gap: 1rem; /* Reduced gap */
     }
     .feature-card {
         /* Calculating height to fit 9 cards within 150vh including gap and section padding */
-        min-height: calc((150vh - 8rem - (8 * 1rem)) / 9);
+        height: 15vh;
+        flex-direction: row;
+        gap: 2vh;
+        padding: 0 3vw;
+    }
+    .feature-card p {
+        font-size: 0.6rem;
     }
 }
 
 /* Small to Medium Screens - 2 column layout */
-@media (min-width: 600px) and (max-width: 899px) {
+@media (min-width: 595px) and (max-width: 899px) {
+    .feature-card svg{
+        font-size: 24px;
+    }
     .features-grid {
         grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns layout */
         gap: 1.5rem;
     }
     .feature-card {
-        /* Adjusting height to fit 5 cards in 2 columns within 150vh, considering gap */
-        min-height: calc((150vh - 8rem - (4 * 1.5rem)) / 5);
+        /* Calculating height to fit 9 cards within 150vh including gap and section padding */
+        height: 26vh;
+        gap: 0;
+    }
+    .feature-card p {
+        font-size: 0.8rem;
+        padding: 1vh 0;
+    }
+    .feature-card h3 {
+        font-size: 1rem;
     }
 }
 
 /* Larger Screens */
 @media (min-width: 900px) {
+    .feature-card svg{
+        font-size: 32px;
+    }
     .features-section {
         padding: 4rem 15vw;
     }
@@ -90,17 +115,30 @@
         /* Adjusted for improved aesthetics and spacing, not strictly height-bound */
         padding: 2rem;
         min-height: 260px; /* Adjusted for larger displays */
-        font-size: 1.1rem;
     }
-    .feature-card svg {
-        font-size: 60px;
+    .feature-card p {
+        font-size: 1rem;
+        padding: 1vh 0;
+    }
+    .feature-card h3 {
+        font-size: 1.2rem;
     }
 }
 
 /* Extra Large Screens */
 @media (min-width: 1200px) {
+    .feature-card svg{
+        font-size: 48px;
+    }
     .features-grid {
         gap: 2.5rem; /* Maximum spacing */
+    }
+    .feature-card p {
+        font-size: 1.2rem;
+        padding: 1vh 0;
+    }
+    .feature-card h3 {
+        font-size: 1.4rem;
     }
     /* Optional further adjustments for extra large screens */
 }

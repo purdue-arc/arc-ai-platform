@@ -68,7 +68,7 @@ function FeaturesSection() {
 function FeatureCard({ IconComponent, title, description }) {
   return (
     <div className="feature-card">
-      <IconComponent style={{ fontSize: 48, color: "#FFFFFF" }} />
+      <IconComponent className="icon" />
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
