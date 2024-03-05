@@ -1,0 +1,12 @@
+/* CodeStyleGraph.css */
+.code-style-graph-container {
+    
+    border: 1px solid #C4C4C4;
+    border-radius: 0.375rem;
+    padding: 1rem;
+  }
+  
+
+.code-style-graph-container {
+    background-color: white;
+}
