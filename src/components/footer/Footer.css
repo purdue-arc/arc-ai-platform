@@ -1,36 +1,35 @@
 .landing-footer {
-    background: black;
+    background: #000000;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 50vh;
     width: 100%;
-    padding: 20px;
+    padding: 3vw; /* Adjusted padding using viewport width */
 }
 
 .footer-content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }
 
 .footer-section {
-    width: calc(25% - 20px); /* Adjust width for 4 columns with margin */
-    margin-right: 30px; /* Adjust margin between sections */
-    margin-bottom: 10px; /* Adjust margin between rows */
+    width: calc(25% - 2vw); /* Adjusted width using viewport width */
+    margin: 0 1.5vw; /* Adjusted margin using viewport width */
+    margin-bottom: 3vw; /* Adjusted margin between rows using viewport width */
 }
 
 .footer-subtitle {
-    font-size: 14px;
+    font-size: 1.5vw; /* Adjusted font size using viewport width */
     font-weight: bold;
     background-color: #333;
     color: #fff;
-    border-radius: 5px;
+    border-radius: 8px;
     white-space: nowrap;
     display: inline-block;
+    padding: 1vw; /* Adjusted padding using viewport width */
     transition: padding 0.3s;
 }
 
@@ -40,37 +39,55 @@
     transition: color 0.3s;
 }
 
+.resources a, .social-media a {
+    display: block;
+    text-decoration: none;
+    color: #007bff;
+    margin-bottom: 1vh;
+}
+
+.contact-details p {
+    margin-bottom: 1vh;
+}
+
 .social-media a:hover, .resources a:hover, .legal li a:hover {
     color: #0056b3;
 }
 
+.newsletter {
+    width: 100%;
+    margin-top: 1vh;
+    padding-bottom: 1vh;
+}
+
 .newsletter form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     width: 100%;
 }
 
 .newsletter input {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    margin-right: 10px;
-    flex-grow: 1;
+    padding: 1vw; /* Adjusted padding using viewport width */
+    border: 0.1vw solid #ddd; /* Adjusted border using viewport width */
+    border-radius: 0.5vw; /* Adjusted border radius using viewport width */
+    margin-bottom: 1.5vw; /* Adjusted margin between input and button using viewport width */
+    width: 100%;
 }
 
 .newsletter button {
-    padding: 10px 20px;
+    padding: 1vw 2vw; /* Adjusted padding using viewport width */
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 3px;
+    border-radius: 0.5vw;
     cursor: pointer;
+    width: 100%;
 }
 
 .copyright {
     text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
+    margin-top: 3vw; /* Adjusted margin using viewport width */
+    font-size: 1vw; /* Adjusted font size using viewport width */
     color: #999;
 }
 
@@ -78,9 +95,18 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 1.5vw; /* Adjusted margin using viewport width */
 }
 
 .legal li {
-    margin: 0 10px;
+    margin: 0 1.5vw; 
+}
+
+.footer-section:nth-child(4) {
+    margin-left: 12vw; 
+    margin-right: auto; 
+}
+
+.newsletter input[type="email"] {
+    width: 150%;
 }
