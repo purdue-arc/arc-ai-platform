@@ -19,13 +19,6 @@ function Landing() {
             <div className="bg-block flip-both"></div>
           </div>
         </ParallaxLayer>
-        <ParallaxLayer
-          offset={0}
-          sticky={{ start: 0, end: 1.4 }}
-          style={{ zIndex: 10 }}
-        >
-          <div className="landing-bg-cover"></div>
-        </ParallaxLayer>
         <ParallaxLayer offset={0} speed={1} style={{ zIndex: 20 }}>
           <div className="landing-content">
             <HeroSection />
