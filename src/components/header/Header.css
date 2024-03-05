@@ -26,11 +26,11 @@
 }
 .header-logo, .header-logo.compact-logo, .header-logo-link.compact-logo-link {
     transition: transform 0.3s ease; /* Transition applies to both states */
-    width: 10vw; /* Adjusted for consistency */
+    width: 6vw; /* Adjusted for consistency */
 }
 
 .header-logo.compact-logo, .header-logo-link.compact-logo-link {
-    transform: scale(0.8); /* Adjust scale for a subtle change */
+    transform: scale(0.6); /* Adjust scale for a subtle change */
 }
 
 .landing-nav, .nav-link {
