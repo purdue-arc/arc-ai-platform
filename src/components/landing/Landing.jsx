@@ -10,7 +10,7 @@ function Landing() {
   return (
     <div>
       <Header />
-      <Parallax pages={1.8} style={{ top: "5vh", left: "0" }}>
+      <Parallax pages={2} style={{ top: "5vh", left: "0" }}>
         <ParallaxLayer offset={0} speed={0.5} style={{ zIndex: 0 }}>
           <div className="background-full-screen">
             <div className="bg-block"></div>
@@ -32,7 +32,7 @@ function Landing() {
             <FeaturesSection />
           </div>
         </ParallaxLayer>
-        <ParallaxLayer offset={1.3} speed={1} style={{ zIndex: 3 }}>
+        <ParallaxLayer offset={1.5} speed={1} style={{ zIndex: 3 }}>
           <Footer />
         </ParallaxLayer>
       </Parallax>

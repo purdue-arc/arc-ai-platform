@@ -14,7 +14,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    height: 200vh;
+    height: 250vh;
     width: 100vw;
     overflow: hidden;
     position: fixed; /* Cover the entire viewport */
@@ -25,7 +25,7 @@
 
 .bg-block {
     width: 100vw;
-    height: 200vh;
+    height: 250vh;
     background-image: url('../../assets/ai.png'); /* Your image path */
     background-size: cover;
     background-position: center;
