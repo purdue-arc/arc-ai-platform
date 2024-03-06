@@ -66,7 +66,7 @@
     }
     .feature-card {
         /* Calculating height to fit 9 cards within 150vh including gap and section padding */
-        height: 15vh;
+        height: calc(12vh + 6vw);
         flex-direction: row;
         gap: 2vh;
         padding: 0 3vw;
@@ -87,7 +87,7 @@
     }
     .feature-card {
         /* Calculating height to fit 9 cards within 150vh including gap and section padding */
-        height: 26vh;
+        height: calc(16vh + 7vw);
         gap: 0;
     }
     .feature-card p {
@@ -114,14 +114,14 @@
     .feature-card {
         /* Adjusted for improved aesthetics and spacing, not strictly height-bound */
         padding: 2rem;
-        min-height: 260px; /* Adjusted for larger displays */
+        height: calc(22vh + 6vw);
     }
     .feature-card p {
-        font-size: 1rem;
+        font-size: calc(0.7vh + 0.7vw);
         padding: 1vh 0;
     }
     .feature-card h3 {
-        font-size: 1.2rem;
+        font-size: calc(0.9vh + 0.9vw);
     }
 }
 
