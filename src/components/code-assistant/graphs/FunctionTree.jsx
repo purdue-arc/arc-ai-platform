@@ -1,50 +1,32 @@
-import React from "react";
+// FunctionTree.jsx
+import React from 'react';
+import { GraphCanvas } from 'reagraph';
+import './FunctionTree.css'; // Import your CSS file for styling
 
-export default function FunctionTree() {
-  const graph = {
-    nodes: [
-      { id: 1, label: "1", title: "node 1 tooltip text" },
-      { id: 2, label: "2", title: "node 2 tooltip text" },
-      { id: 3, label: "3", title: "node 3 tooltip text" },
-      { id: 4, label: "4", title: "node 4 tooltip text" },
-      { id: 5, label: "5", title: "node 5 tooltip text" },
-      { id: 6, label: "6", title: "node 6 tooltip text" }
-    ],
-    edges: [
-      { from: 1, to: 2 },
-      { from: 2, to: 1 },
-      { from: 1, to: 3 },
-      { from: 2, to: 4 },
-      { from: 2, to: 5 },
-      { from: 2, to: 6 },
-      { from: 6, to: 1 },
-      { from: 5, to: 6 }
-    ]
-  };
-
-  const options = {
-    layout: {
-      hierarchical: false
-    },
-    edges: {
-      color: "red"
-    },
-    height: "500px"
-  };
-
-  const events = {
-    select: function (event) {
-      var { nodes, edges } = event;
-      console.log(edges);
-      console.log(nodes);
-    }
-  };
-
-  return (
-    <Graph
-      graph={graph}
-      options={options}
-      events={events}
+const FunctionTree = () => (
+  <div className="function-tree-container"> {/* Apply styles using CSS class */}
+    <GraphCanvas
+      width={800} // Set the width of the canvas
+      height={600} // Set the height of the canvas
+      nodes={[
+        { id: 'n-1', label: 'Node 1', color: 'red' }, // Define nodes with id, label, and color
+        { id: 'n-2', label: 'Node 2', color: 'blue' },
+        { id: 'n-3', label: 'Node 3', color: 'green' }
+      ]}
+      edges={[
+        { id: '1->2', source: 'n-1', target: 'n-2', label: 'Edge 1-2', color: 'black' }, // Define edges with id, source, target, label, and color
+        { id: '2->3', source: 'n-2', target: 'n-3', label: 'Edge 2-3', color: 'gray' }
+      ]}
+      nodeSize={20} // Set the size of the nodes
+      nodeShape="circle" // Set the shape of the nodes
+      edgeWidth={2} // Set the width of the edges
+      edgeArrow={true} // Enable arrowheads on the edges
+      edgeArrowPosition={0.5} // Set the position of the arrowheads on the edges
+      edgeArrowColor="gray" // Set the color of the arrowheads on the edges
+      onNodeClick={(nodeId) => console.log(`Clicked on node ${nodeId}`)} // Handle node click event
+      onEdgeClick={(edgeId) => console.log(`Clicked on edge ${edgeId}`)} // Handle edge click event
     />
-  );
-}
+  </div>
+);
+
+export default FunctionTree;

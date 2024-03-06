@@ -1,8 +1,10 @@
+// CodeAssistant.jsx
 import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
+import FunctionTree from "./graphs/FunctionTree.jsx";
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -95,6 +97,9 @@ const CodeAssistant = () => {
             <div className="graphsContainer">
               <div className="graph">
                 <CodeStyleGraph/>
+              </div>
+              <div className="graph">
+                <FunctionTree/>
               </div>
             </div>
           )}
