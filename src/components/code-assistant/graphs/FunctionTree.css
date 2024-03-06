@@ -4,7 +4,7 @@
   }
 
   .function-tree-container {
-    width: 300px; /* Set the width of the container */
-    height: 300px; /* Set the height of the container */
-    overflow: hidden;
+    position: "fixed";
+    width: '75%';
+    height: '75%'
   }
