@@ -27,24 +27,31 @@ const Chatbot = () => {
   const getData = async () => {
     try {
       const hintArray = [];
+      
+      // Get popular messages
+      const popularMessagesSnapshot = await getDocs(collection(db, "popular_messages"));
+      popularMessagesSnapshot.forEach((doc) => {
+        hintArray.push(doc.id); // Add the popular message to the hints array
+      });
+
+      // You can add other hints to the array as well if needed
       const userPromptsSnapshot = await getDocs(collection(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id")));
       userPromptsSnapshot.forEach((doc) => {
         hintArray.push(doc.data().prompt);
       });
+
       console.log(hintArray);
       setHintData(hintArray);
     } catch (error) {
-      console.error("Error fetching user prompts: ", error);
+      console.error("Error fetching data: ", error);
     }
   };
-  
-  
 
   const handlePromptChange = (event) => {
     setPrompt(event.target.value);
   };
 
-  const handlePromptSubmit = (event) => {
+  const handlePromptSubmit = async (event) => {
     console.log("Submission Recorded");
     event.preventDefault();
     let uuid = uuidv4();
@@ -54,10 +61,14 @@ const Chatbot = () => {
       timestamp: Date.now(),
       chat_id: uuid,
     };
-    setDoc(
-      doc(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id"), uuid),
-      data,
-    ).then().error("bruh (or or oro ror or o ro ror or or)");
+    try {
+      await setDoc(
+        doc(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id"), uuid),
+        data,
+      );
+    } catch (error) {
+      console.error("Error submitting prompt: ", error);
+    }
   };
 
   const handleKeyDown = (event) => {
@@ -87,34 +98,16 @@ const Chatbot = () => {
           How can I help you today?
         </Typography>
         <div className="chat-options">
-          <Button
-            variant="contained"
-            onClick={handlePromptSubmit}
-            className="chat-option"
-          >
-            Tell me about ARC
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handlePromptSubmit}
-            className="chat-option"
-          >
-            Tell me about ARC's goals
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handlePromptSubmit}
-            className="chat-option"
-          >
-            What is RISE
-          </Button>
-          <Button
-            variant="contained"
-            onClick={handlePromptSubmit}
-            className="chat-option"
-          >
-            How can I join RISE
-          </Button>
+          {hintData.slice(0, 4).map((hint, index) => (
+              <Button
+                key={index}
+                variant="contained"
+                onClick={() => setPrompt(hint)}
+                className="chat-option"
+              >
+                {hint}
+              </Button>
+            ))}
         </div>
         <form className="prompt-form" onSubmit={handlePromptSubmit}>
           <div className="prompt-container">
