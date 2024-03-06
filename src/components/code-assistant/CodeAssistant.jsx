@@ -4,9 +4,33 @@ import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
-import FunctionTree from "./graphs/FunctionTree.jsx";
 import ScrollDetector from "../../ScrollDetector.jsx";
 import { useScrollContext } from "../../ScrollContext.jsx";
+import { useNavigate } from "react-router-dom";
+import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
+
+const NavigateCard = () => {
+  let navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/code-assistant/code-report-graph");
+  };
+
+  return (
+    <Card sx={{ maxWidth: 345, cursor: "pointer" }} onClick={handleNavigate}>
+      <CardActionArea>
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            Code Review Graph
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Click to explore the Code Review Graph for insights and analytics.
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+};
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -101,13 +125,13 @@ const CodeAssistant = () => {
             </button>
             <div className="codeResponse">{response}</div>
           </form>
-          {showGraphs && ( 
+          {showGraphs && (
             <div className="graphsContainer">
               <div className="graph">
-                <CodeStyleGraph/>
+                <CodeStyleGraph />
               </div>
               <div className="graph">
-                <FunctionTree/>
+                <NavigateCard />
               </div>
             </div>
           )}

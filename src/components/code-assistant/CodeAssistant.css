@@ -76,7 +76,7 @@ button {
 }
 
 .graphsContainer {
-    display: inline-flex;
+    display: flex;
     justify-content: center; /* Center the graphs horizontally */
     gap: 20px; /* Add some gap between the graphs */
   }
