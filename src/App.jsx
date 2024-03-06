@@ -6,6 +6,7 @@ import CodeAssistant from "./components/code-assistant/CodeAssistant.jsx";
 import SignInDialog from "./components/sign-in/SignInDialog.jsx";
 import Cookies from "js-cookie"; // Import js-cookie
 import "./App.css";
+import { ScrollProvider } from "./ScrollContext.jsx";
 
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -23,13 +24,15 @@ function App() {
   };
   return (
     <div className={dialogOpen ? "blur-background" : ""}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/arc-wiki" element={<Chatbot />} />
-          <Route path="/code-assistant" element={<CodeAssistant />} />
-        </Routes>
-      </BrowserRouter>
+      <ScrollProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/arc-wiki" element={<Chatbot />} />
+            <Route path="/code-assistant" element={<CodeAssistant />} />
+          </Routes>
+        </BrowserRouter>
+      </ScrollProvider>
       <SignInDialog open={dialogOpen} onClose={handleClose} />
     </div>
   );

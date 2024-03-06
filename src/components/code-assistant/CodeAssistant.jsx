@@ -5,6 +5,8 @@ import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
 import FunctionTree from "./graphs/FunctionTree.jsx";
+import ScrollDetector from "../../ScrollDetector.jsx";
+import { useScrollContext } from "../../ScrollContext.jsx";
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -15,6 +17,7 @@ const CodeAssistant = () => {
     efficiency: 50,
   });
   const [showGraphs, setShowGraphs] = useState(false); // State to track whether to show graphs or not
+  const { updateScrollState } = useScrollContext();
 
   const handleCodeChange = (event) => {
     setCode(event.target.value);
@@ -41,6 +44,11 @@ const CodeAssistant = () => {
   return (
     <>
       <Header />
+      <ScrollDetector
+        onVisibilityChange={(isVisible) =>
+          updateScrollState({ isCompact: isVisible })
+        }
+      />
       <body className="assistant">
         <h1 className="title">Code Assistant</h1>
         <div className="codeReviewTool">

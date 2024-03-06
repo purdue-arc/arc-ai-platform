@@ -26,7 +26,7 @@
 }
 .header-logo, .header-logo.compact-logo, .header-logo-link.compact-logo-link {
     transition: transform 0.3s ease; /* Transition applies to both states */
-    width: 10vw; /* Adjusted for consistency */
+    width: 6vw; /* Adjusted for consistency */
 }
 
 .header-logo.compact-logo, .header-logo-link.compact-logo-link {
