@@ -6,7 +6,7 @@ import "./Chatbot.css"; // Make sure to include your original CSS file
 import logo from "../../assets/logo.png";
 import Footer from "../footer/Footer.jsx";
 import Header from "../header/Header.jsx";
-import { getFirestore, collection, getDocs, doc, setDoc} from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, setDoc, getDoc} from "firebase/firestore";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import ScrollDetector from "../../ScrollDetector.jsx";
@@ -16,6 +16,7 @@ const Chatbot = () => {
   const [prompt, setPrompt] = useState("");
   const [backgroundVisible, setBackgroundVisible] = useState(true);
   const [hintData, setHintData] = useState([]);
+  const [popularMessages, setPopularMessages] = useState([]);
   const inputRef = useRef(null);
   const db = getFirestore();
   const { updateScrollState } = useScrollContext();
@@ -27,20 +28,21 @@ const Chatbot = () => {
   const getData = async () => {
     try {
       const hintArray = [];
+      const popularArray = [];
       
       // Get popular messages
-      const popularMessagesSnapshot = await getDocs(collection(db, "popular_messages"));
+      const popularMessagesSnapshot = await getDocs(collection(db, "wiki_bot", "popular", "messages"));
       popularMessagesSnapshot.forEach((doc) => {
         hintArray.push(doc.id); // Add the popular message to the hints array
+        popularArray.push(doc.id)
       });
 
-      // You can add other hints to the array as well if needed
       const userPromptsSnapshot = await getDocs(collection(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id")));
       userPromptsSnapshot.forEach((doc) => {
         hintArray.push(doc.data().prompt);
       });
 
-      console.log(hintArray);
+      setPopularMessages(popularArray);
       setHintData(hintArray);
     } catch (error) {
       console.error("Error fetching data: ", error);
@@ -55,21 +57,41 @@ const Chatbot = () => {
     console.log("Submission Recorded");
     event.preventDefault();
     let uuid = uuidv4();
+    let promptLowerCase = prompt.toLowerCase(); // Convert prompt to lowercase
     let data = {
-      prompt: prompt,
-      completion: "",
-      timestamp: Date.now(),
-      chat_id: uuid,
+        prompt: promptLowerCase,
+        completion: "",
+        timestamp: Date.now(),
+        chat_id: uuid,
     };
+
     try {
-      await setDoc(
-        doc(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id"), uuid),
-        data,
-      );
+        // Store the user's prompt in their personal collection
+        await setDoc(
+            doc(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id"), uuid),
+            data,
+        );
+
+        // Reference the document in the "messages" subcollection under "popular"
+        const popularDocRef = doc(db, "wiki_bot", "popular", "messages", promptLowerCase);
+        
+        // Check if the document already exists
+        const popularDocSnap = await getDoc(popularDocRef);
+        
+        if (popularDocSnap.exists()) {
+            // If the document exists, update its count
+            const currentCount = popularDocSnap.data().count;
+            await setDoc(popularDocRef, { count: currentCount + 1 }, { merge: true });
+        } else {
+            // If the document doesn't exist, create it with the initial count
+            await setDoc(popularDocRef, { count: 0 });
+        }
     } catch (error) {
-      console.error("Error submitting prompt: ", error);
+        console.error("Error submitting prompt: ", error);
     }
-  };
+};
+
+  
 
   const handleKeyDown = (event) => {
     if (event.key === "Tab") {
@@ -98,7 +120,7 @@ const Chatbot = () => {
           How can I help you today?
         </Typography>
         <div className="chat-options">
-          {hintData.slice(0, 4).map((hint, index) => (
+          {popularMessages.slice(0, 4).map((hint, index) => (
               <Button
                 key={index}
                 variant="contained"
