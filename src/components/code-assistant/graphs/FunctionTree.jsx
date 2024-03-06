@@ -17,61 +17,59 @@ import { GraphCanvas } from "reagraph";
 import "./FunctionTree.css"; // Assuming your styles are defined here
 
 const Theme = {
-  canvas: { background: "#fff" },
+  canvas: { background: "#f0f4f8" }, // Lighter background for better contrast
   node: {
-    fill: "#7CA0AB",
-    activeFill: "#1DE9AC",
+    fill: "#5599ff", // Brighter fill color for nodes
+    activeFill: "#ff5555", // Highlight color for active nodes
+    hoverFill: "#ffaa00", // Assuming your library supports hover states
     opacity: 1,
     selectedOpacity: 1,
-    inactiveOpacity: 0.2,
+    inactiveOpacity: 0.5, // Slightly more visible inactive nodes
     label: {
-      color: "#2A6475",
+      color: "#333", // Darker label for better readability
       stroke: "#fff",
-      activeColor: "#1DE9AC",
-    },
-    subLabel: {
-      color: "#ddd",
-      stroke: "transparent",
-      activeColor: "#1DE9AC",
+      activeColor: "#ff5555",
+      hoverColor: "#ffaa00", // Assuming your library supports hover states
     },
   },
   lasso: {
-    border: "1px solid #55aaff",
-    background: "rgba(75, 160, 255, 0.1)",
+    border: "1px solid #0077ff",
+    background: "rgba(0, 119, 255, 0.1)",
   },
   ring: {
-    fill: "#D8E6EA",
-    activeFill: "#1DE9AC",
+    fill: "#aaccee",
+    activeFill: "#ff5555",
   },
   edge: {
-    fill: "#D8E6EA",
-    activeFill: "#1DE9AC",
-    opacity: 1,
+    fill: "#bbb", // Neutral color for edges
+    activeFill: "#ff5555", // Highlight color for active or highlighted edges
+    hoverFill: "#ffaa00", // Assuming your library supports hover states for edges
+    opacity: 0.8,
     selectedOpacity: 1,
-    inactiveOpacity: 0.1,
+    inactiveOpacity: 0.3,
     label: {
       stroke: "#fff",
-      color: "#2A6475",
-      activeColor: "#1DE9AC",
-      fontSize: 6,
+      color: "#666", // Darker color for edge labels for readability
+      activeColor: "#ff5555",
+      fontSize: 8, // Slightly larger font for readability
     },
   },
   arrow: {
-    fill: "#D8E6EA",
-    activeFill: "#1DE9AC",
+    fill: "#bbb",
+    activeFill: "#ff5555",
+    hoverFill: "#ffaa00", // Assuming hover state support
   },
   cluster: {
-    stroke: "#D8E6EA",
+    stroke: "#aaccee",
     opacity: 1,
     selectedOpacity: 1,
-    inactiveOpacity: 0.1,
+    inactiveOpacity: 0.3,
     label: {
       stroke: "#fff",
-      color: "#2A6475",
+      color: "#333",
     },
   },
 };
-
 function CanvasLayer({ nodes, edges }) {
   return (
     <GraphCanvas
@@ -87,8 +85,6 @@ function CanvasLayer({ nodes, edges }) {
       edgeArrow={true}
       edgeArrowPosition={"mid"}
       edgeArrowColor="gray"
-      onNodeClick={(nodeId) => console.log(`Clicked on node ${nodeId}`)}
-      onEdgeClick={(edgeId) => console.log(`Clicked on edge ${edgeId}`)}
     />
   );
 }
@@ -116,34 +112,43 @@ const generateNodes = (count, rng) => {
 };
 
 const generateEdges = (nodes, rng) => {
-  let edges = [];
+  let edges = new Map(); // Use a Map to avoid duplicate edges
+
   nodes.forEach((sourceNode, index) => {
-    // To ensure a valid graph, connect each node with at least one other node
+    // Guarantee at least one edge per node for graph validity
     const targetIndex = (index + 1) % nodes.length;
     const targetNode = nodes[targetIndex];
-    edges.push({
-      id: `${sourceNode.id}->${targetNode.id}`,
-      source: sourceNode.id,
-      target: targetNode.id,
-      label: `Edge ${sourceNode.label}-${targetNode.label}`,
-      color: "gray",
-    });
+    const edgeKey = `${sourceNode.id}->${targetNode.id}`;
 
-    // Optionally add more edges randomly
+    if (!edges.has(edgeKey)) {
+      edges.set(edgeKey, {
+        id: edgeKey,
+        source: sourceNode.id,
+        target: targetNode.id,
+        label: `Edge ${sourceNode.label}-${targetNode.label}`,
+        color: "gray",
+      });
+    }
+
+    // Add more edges randomly but avoid duplicates
     nodes.forEach((targetNode) => {
       if (sourceNode.id !== targetNode.id && rng.random() > 0.9) {
-        // Adjust the threshold as needed
-        edges.push({
-          id: `${sourceNode.id}->${targetNode.id}`,
-          source: sourceNode.id,
-          target: targetNode.id,
-          label: `Edge ${sourceNode.label}-${targetNode.label}`,
-          color: "gray",
-        });
+        const randomEdgeKey = `${sourceNode.id}->${targetNode.id}`;
+        if (!edges.has(randomEdgeKey)) {
+          edges.set(randomEdgeKey, {
+            id: randomEdgeKey,
+            source: sourceNode.id,
+            target: targetNode.id,
+            label: `Edge ${sourceNode.label}-${targetNode.label}`,
+            color: "gray",
+          });
+        }
       }
     });
   });
-  return edges;
+
+  // Convert the Map values to an array since the function expects to return an array of edges
+  return Array.from(edges.values());
 };
 
 const FunctionTree = () => {
@@ -192,25 +197,39 @@ const FunctionTree = () => {
   const [filteredNodes, setFilteredNodes] = useState(nodes);
   const [filteredEdges, setFilteredEdges] = useState(edges);
   const filterGraph = (searchTerm) => {
+    console.log(searchTerm);
     // Assuming searchTerm is the label or a part of it, and we're doing a case-insensitive search.
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
 
-    // Filter nodes based on the search term being in the label.
-    const newFilteredNodes = nodes.filter((node) =>
+    // Step 1: Filter nodes based on the search term being in the label.
+    const directlyMatchedNodes = nodes.filter((node) =>
       node.label.toLowerCase().includes(lowerCaseSearchTerm),
     );
 
-    // Filter edges to include only those that connect to the filtered nodes.
-    const newFilteredEdges = edges.filter((edge) =>
-      newFilteredNodes.some(
-        (node) => node.id === edge.source || node.id === edge.target,
-      ),
+    // Initialize a Set to keep track of all matching node IDs for uniqueness
+    const matchedNodeIds = new Set(directlyMatchedNodes.map((node) => node.id));
+
+    // Step 2: Identify all edges connected to those nodes and add connected nodes to the set.
+    const connectedEdges = edges.filter((edge) => {
+      if (matchedNodeIds.has(edge.source) || matchedNodeIds.has(edge.target)) {
+        matchedNodeIds.add(edge.source);
+        matchedNodeIds.add(edge.target);
+        return true;
+      }
+      return false;
+    });
+
+    // Step 3: Filter nodes to include all that are either directly matched or connected.
+    const newFilteredNodes = nodes.filter((node) =>
+      matchedNodeIds.has(node.id),
     );
 
-    // Update the states with the filtered results.
+    // Since connectedEdges already includes edges connected to the matched nodes,
+    // we can use it directly as the filtered edges.
     setFilteredNodes(newFilteredNodes);
-    setFilteredEdges(newFilteredEdges);
+    setFilteredEdges(connectedEdges);
   };
+
   const handleSearch = (event, newValue) => {
     const searchTerm = newValue ? newValue.label : "";
     setSearchTerm(searchTerm);
@@ -320,7 +339,7 @@ const FunctionTree = () => {
             className="function-tree-container"
             style={{ height: "100%", width: "100%" }}
           >
-            <GraphCanvas nodes={filteredNodes} edges={filteredEdges} />
+            <CanvasLayer nodes={filteredNodes} edges={filteredEdges} />
           </div>
         </Box>
       </Container>
