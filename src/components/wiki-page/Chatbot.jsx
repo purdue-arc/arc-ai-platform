@@ -29,26 +29,40 @@ const Chatbot = () => {
     try {
       const hintArray = [];
       const popularArray = [];
-      
+  
       // Get popular messages
       const popularMessagesSnapshot = await getDocs(collection(db, "wiki_bot", "popular", "messages"));
-      popularMessagesSnapshot.forEach((doc) => {
-        hintArray.push(doc.id); // Add the popular message to the hints array
-        popularArray.push(doc.id)
+  
+      // Convert snapshot to an array of objects containing id and count
+      const popularMessages = popularMessagesSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        count: doc.data().count,
+      }));
+  
+      // Sort messages based on count in descending order
+      popularMessages.sort((a, b) => b.count - a.count);
+  
+      // Take only the top 10 most popular messages
+      const topPopularMessages = popularMessages.slice(0, 10);
+  
+      // Push IDs of the top 10 most popular messages to the popularArray
+      topPopularMessages.forEach((message) => {
+        hintArray.push(message.id);
+        popularArray.push(message.id);
       });
-
+  
+      // Get user prompts
       const userPromptsSnapshot = await getDocs(collection(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id")));
       userPromptsSnapshot.forEach((doc) => {
         hintArray.push(doc.data().prompt);
       });
-
+  
       setPopularMessages(popularArray);
       setHintData(hintArray);
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
   };
-
   const handlePromptChange = (event) => {
     setPrompt(event.target.value);
   };
@@ -90,8 +104,6 @@ const Chatbot = () => {
         console.error("Error submitting prompt: ", error);
     }
 };
-
-  
 
   const handleKeyDown = (event) => {
     if (event.key === "Tab") {
