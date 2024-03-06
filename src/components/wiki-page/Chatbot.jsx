@@ -23,7 +23,7 @@ const Chatbot = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [prompt]);
 
   const getData = async () => {
     try {
