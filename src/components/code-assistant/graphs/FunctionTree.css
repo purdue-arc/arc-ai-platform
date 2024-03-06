@@ -1,36 +1,10 @@
-/* FunctionTree.css */
+  .GraphCanvas {
+    width: 25% !important;
+    height: 300px; /* Set the height of the container */
+  }
 
-svg {
-    background-color: white;
-    max-width: 100%; /* Ensure the SVG scales with its container */
+  .function-tree-container {
+    position: "fixed";
+    width: '75%';
+    height: '75%'
   }
-  
-  .link {
-    fill: none;
-    stroke: #555;
-    stroke-opacity: 0.4;
-    stroke-width: 1.5px;
-  }
-  
-  .node circle {
-    fill: #fff;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-  }
-  
-  .node text {
-    font: 10px sans-serif;
-  }
-  
-  .node--internal circle {
-    fill: #555;
-  }
-  
-  .node--internal text {
-    text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
-  }
-  
-  .node--leaf text {
-    fill: black;
-  }
-  

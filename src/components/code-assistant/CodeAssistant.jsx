@@ -1,8 +1,10 @@
+// CodeAssistant.jsx
 import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
+import FunctionTree from "./graphs/FunctionTree.jsx";
 import ScrollDetector from "../../ScrollDetector.jsx";
 import { useScrollContext } from "../../ScrollContext.jsx";
 
@@ -103,6 +105,9 @@ const CodeAssistant = () => {
             <div className="graphsContainer">
               <div className="graph">
                 <CodeStyleGraph/>
+              </div>
+              <div className="graph">
+                <FunctionTree/>
               </div>
             </div>
           )}
