@@ -6,7 +6,7 @@ import "./Chatbot.css"; // Make sure to include your original CSS file
 import logo from "../../assets/logo.png";
 import Footer from "../footer/Footer.jsx";
 import Header from "../header/Header.jsx";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, setDoc} from "firebase/firestore";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 import ScrollDetector from "../../ScrollDetector.jsx";
@@ -24,16 +24,21 @@ const Chatbot = () => {
     getData();
   }, []);
 
-  const getData = () => {
-    // potential could use ai to generate this array?
-    const hintArray = [
-      "Tell me about ARC",
-      "Tell me about ARC's goals",
-      "What is RISE",
-      "How can I join RISE",
-    ];
-    setHintData(hintArray);
+  const getData = async () => {
+    try {
+      const hintArray = [];
+      const userPromptsSnapshot = await getDocs(collection(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id")));
+      userPromptsSnapshot.forEach((doc) => {
+        hintArray.push(doc.data().prompt);
+      });
+      console.log(hintArray);
+      setHintData(hintArray);
+    } catch (error) {
+      console.error("Error fetching user prompts: ", error);
+    }
   };
+  
+  
 
   const handlePromptChange = (event) => {
     setPrompt(event.target.value);
@@ -52,7 +57,7 @@ const Chatbot = () => {
     setDoc(
       doc(db, "wiki_bot", Cookies.get("user_id"), Cookies.get("user_id"), uuid),
       data,
-    ).then();
+    ).then().error("bruh (or or oro ror or o ro ror or or)");
   };
 
   const handleKeyDown = (event) => {
