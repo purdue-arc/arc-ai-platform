@@ -1,0 +1,8 @@
+.function-tree-container {
+    height: 60vh; /* Adjust based on your header and input fields */
+    width: 50vw;
+    overflow: hidden; /* Updated to hide instead of scroll to maintain clean lines */
+    border-radius: 8px; /* Optional: adds a modern rounded corner */
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.1); /* Optional: adds depth with a subtle shadow */
+    position: relative; /* Ensures proper positioning within the Grid layout */
+}

@@ -30,7 +30,7 @@
 }
 
 .header-logo.compact-logo, .header-logo-link.compact-logo-link {
-    transform: scale(0.6); /* Adjust scale for a subtle change */
+    transform: scale(0.8); /* Adjust scale for a subtle change */
 }
 
 .landing-nav, .nav-link {
@@ -50,7 +50,7 @@
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
-    font-size: 1vw; /* Standardized font size here */
+    font-size: calc(0.7vw + 0.7vh); /* Standardized font size here */
     padding: 1vh 0.5vw; /* Increased clickable area */
     transition: color 0.2s ease; /* Smooth transition for hover effect */
 }
