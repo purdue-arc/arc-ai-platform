@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
+import { db } from '../../firebaseconfig.js'; // Import from your config file
+import { collection, addDoc } from 'firebase/firestore';
 
 const CodeAssistant = () => {
   const [code, setCode] = useState("");
@@ -24,19 +26,32 @@ const CodeAssistant = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log("Submitted code:", code);
     console.log("Settings:", settings);
-    // Simulate a response for demonstration
+    // Create the JSON file structure
     setResponse("Your code has been analyzed. Here's some advice...");
-    // In a real application, you'd send the code and settings to a server for analysis and display the response here
+    const codeData = {
+      code: code,
+      settings: settings,
+      timestamp: new Date() // Add a timestamp if you'd like
+    };
+
+    try {
+      const docRef = await addDoc(collection(db, "codeSubmissions"), codeData);
+      console.log("Document written with ID: ", docRef.id);
+      setResponse("Your code has been submitted for review!"); // Update response
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      setResponse("An error occurred while submitting your code.");
+    }
   };
 
   return (
     <>
       <Header />
-      <body class="assistant">
+      <body className="assistant">
         <h1 className="title">Code Assistant</h1>
         <div className="codeReviewTool">
           <div className="leftPanel">
@@ -95,3 +110,4 @@ const CodeAssistant = () => {
 };
 
 export default CodeAssistant;
+
