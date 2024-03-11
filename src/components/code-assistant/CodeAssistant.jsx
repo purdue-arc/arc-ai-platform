@@ -3,12 +3,14 @@ import "./CodeAssistant.css";
 import Header from "../header/Header.jsx";
 import Footer from "../footer/Footer.jsx";
 import { db } from "../../firebaseconfig.js"; // Import from your config file
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import { useScrollContext } from "../../ScrollContext.jsx";
 import ScrollDetector from "../../ScrollDetector.jsx";
 import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { v4 as uuidv4 } from "uuid";
 
 const NavigateCard = () => {
   let navigate = useNavigate();
@@ -69,13 +71,37 @@ const CodeAssistant = () => {
     };
 
     try {
-      const docRef = await addDoc(collection(db, "codeSubmissions"), codeData);
-      console.log("Document written with ID: ", docRef.id);
+      let uuid = uuidv4();
+      await setDoc(
+        doc(
+          db,
+          "codeSubmissions",
+          Cookies.get("user_id"),
+          Cookies.get("user_id"),
+          uuid,
+        ),
+        codeData,
+      );
+      console.log("Document written with ID: ", uuid);
       setResponse("Your code has been submitted for review!"); // Update response
+      let user_info = {
+        recent_id: uuid,
+      };
+      await setDoc(
+        doc(
+          db,
+          "codeSubmissions",
+          Cookies.get("user_id"),
+          Cookies.get("user_id"),
+          "user_info",
+        ),
+        user_info,
+      );
     } catch (error) {
       console.error("Error adding document: ", error);
       setResponse("An error occurred while submitting your code.");
     }
+
     setShowGraphs(true);
   };
 
