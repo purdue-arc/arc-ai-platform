@@ -96,6 +96,7 @@ const CodeAssistant = () => {
           "user_info",
         ),
         user_info,
+        { merge: true },
       );
     } catch (error) {
       console.error("Error adding document: ", error);

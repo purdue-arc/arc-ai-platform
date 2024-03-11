@@ -121,6 +121,7 @@ const Chatbot = () => {
           "user_info",
         ),
         user_info,
+        { merge: true },
       );
 
       // Reference the document in the "messages" subcollection under "popular"
@@ -145,7 +146,7 @@ const Chatbot = () => {
         );
       } else {
         // If the document doesn't exist, create it with the initial count
-        await setDoc(popularDocRef, { count: 0 });
+        await setDoc(popularDocRef, { count: 1 });
       }
     } catch (error) {
       console.error("Error submitting prompt: ", error);
@@ -198,6 +199,7 @@ const Chatbot = () => {
                 value={prompt}
                 onChange={handlePromptChange}
                 onKeyDown={handleKeyDown}
+                inputRef={inputRef}
                 placeholder="Enter your prompt..."
               />
             </Hint>
