@@ -1,82 +1,114 @@
-.title{
-    justify-content: center;
-    text-align: center;
-    padding-top: 5vh;
-}
-.codeReviewTool {
-    display: flex;
-    justify-content: space-evenly; /* Aligns children (form and settings panel) horizontally */
-    flex-wrap: wrap; /* Allows items to wrap as needed */
-    gap: 20px; /* Adds space between the form and settings panel */
-    padding-top: 4vh;
-    padding-bottom: 10vh; /* Adds padding at the top and bottom to avoid touching header/footer */
+/* General styling for the assistant container */
+.assistant {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../../assets/bg-assistant2.png);
+    background-attachment: fixed;
+    margin-top: -10vh;
+    background-repeat: no-repeat;
+    width: 100vw;
+    background-size: 100% calc(100% + 10vh); /* Extend the background */
+    flex-direction: column;
 }
 
+/* Title styling */
+.title {
+    text-align: center;
+    font-size: calc(2vh + 2vw);
+    padding-top: 17vh;
+    color: #FFFFFF; /* Assuming a light text color for contrast */
+}
+
+/* Main container for code review tools */
+.codeReviewTool {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 10vh 0;
+}
+
+/* Left panel for settings */
 .leftPanel {
-    /* Adjusted positioning */
-    position: relative; /* Changed from fixed to relative */
-    width: 20vw; /* Adjust width as needed */
-    height: fit-content;
-    min-width: 200px; /* Ensures the panel doesn't become too narrow */
     background-color: #383838;
     padding: 2vh;
+    margin-right: 1vw;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-height: 30vh;
-    overflow: auto; /* Keeps the overflow behavior */
+    color: #FFFFFF; /* For better readability */
+    height: 30vh;
+    width: 20vw;
+    align-items: center;
 }
 
 .settingsPanel .setting {
-    display: flex; /* Aligns label and input horizontally */
-    align-items: center; /* Centers items vertically */
-    margin: 3vh 0;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
 }
 
 .setting label {
-    flex: 1; /* Allows the label to fill the space */
+    flex: 1;
+    margin-right: 10px; /* Spacing between label and input */
 }
 
 .setting input[type="range"] {
-    flex: 2; /* Gives more space to the input */
-    margin-left: 10px; /* Adds some space between the label and the input */
+    width: 10vw;
 }
 
+/* Styling for the code input form */
 .codeInputForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 60vw;
-    max-width: 800px; /* Limits the maximum width */
-}
-
-.codeInput, .codeResponse {
-    width: 100%;
-    padding: 2vh 1vw;
-    border-radius: 8px;
 }
 
 .codeInput {
-    height: 30vh; /* Adjust based on your preference */
+    width: 100%;
+    height: 30vh;
     margin-bottom: 2vh;
-    background-color: #383838;
-    color: white;
-    padding: 15px;
+    padding: 2vh;
+    font-size: 2vh;
+    border-radius: 8px;
     border: 2px solid #007bff;
 }
 
+.getAdvice {
+    padding: 1vh 2vw;
+    font-size: 2vh;
+    background-color: #007bff;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.getAdvice:hover {
+    background-color: #0056b3;
+}
+
+/* Response container */
 .codeResponse {
     background-color: #8ea47f;
+    color: #333333;
+    padding: 2vh;
+    border-radius: 8px;
     margin-top: 2vh;
-    border: 1px solid #ccc;
-    height: 20vh;
-    color: #333;
-    min-height: 100px; /* Ensures there's enough space for the response */
+    height: 30vh;
+    width: 60vw;
 }
 
-button {
-    align-self: center; /* Centers the button in the form */
-    padding: 2vh 0;
-}
-
+/* Graphs container for visualization */
 .graphsContainer {
     display: flex;
-    justify-content: center; /* Center the graphs horizontally */
-    gap: 20px; /* Add some gap between the graphs */
-  }
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-left: 20vw;
+    width: 60vw;
+    margin-top: 4vh;
+}
+
+.graph {
+    width: 25vw;
+}

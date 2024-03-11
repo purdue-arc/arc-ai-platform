@@ -20,14 +20,21 @@ const NavigateCard = () => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, cursor: "pointer" }} onClick={handleNavigate}>
-      <CardActionArea>
-        <CardContent>
+    <Card sx={{ cursor: "pointer" }} onClick={handleNavigate}>
+      <CardActionArea sx={{ height: "25vw" }}>
+        <CardContent sx={{ padding: "0 2vw 0 2vw" }}>
           <Typography gutterBottom variant="h5" component="div">
             Code Review Graph
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Click to explore the Code Review Graph for insights and analytics.
+            This graph is a comprehensive review of dependencies within this
+            codebase. This means that each function call, library usage, or
+            class dependency will be tracked in the form of a graph data
+            structure. You can use this to visualize your codebase and find
+            certain heavily dependent or underutilized aspects of your project.
+            The larger the size of the node, the more dependent, the smaller the
+            less.
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -178,8 +185,9 @@ const CodeAssistant = () => {
           )}
         </div>
       </body>
-
-      <Footer />
+      <div className="extra-top">
+        <Footer />
+      </div>
     </>
   );
 };

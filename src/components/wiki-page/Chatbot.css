@@ -5,7 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(../../assets/wiki.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)),
+                    url(../../assets/wiki.png);
   background-size: cover;
   padding-bottom: 20vh; 
 }

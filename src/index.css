@@ -70,19 +70,6 @@ button:hover {
 }
 
 
-.assistant {
-  background-image: url(./assets/bg-assistant2.png);
-  background-size: cover;
-
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: repeat-y;
-  background-size: cover;
-  }
-
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
