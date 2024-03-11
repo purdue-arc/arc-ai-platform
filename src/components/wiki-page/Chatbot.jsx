@@ -23,9 +23,10 @@ import { db } from "../../firebaseconfig.js";
 const Chatbot = () => {
   const [prompt, setPrompt] = useState("");
   const [backgroundVisible, setBackgroundVisible] = useState(true);
-  const [hintData, setHintData] = useState([]);
   const [popularMessages, setPopularMessages] = useState([]);
-  const inputRef = useRef(null);
+  const [messagePlaceholder, setMessagePlaceholder] = useState(
+    "Enter your prompt...",
+  );
   const db = getFirestore();
   const { updateScrollState } = useScrollContext();
 
@@ -35,47 +36,45 @@ const Chatbot = () => {
 
   const getData = async () => {
     try {
-      const hintArray = [];
-      const popularArray = [];
-
       // Get popular messages
       const popularMessagesSnapshot = await getDocs(
         collection(db, "wiki_bot", "popular", "messages"),
       );
 
       // Convert snapshot to an array of objects containing id and count
-      const popularMessages = popularMessagesSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        count: doc.data().count,
-      }));
+      const relevantMessages = popularMessagesSnapshot.docs
+        .map((doc) => ({
+          id: doc.id,
+          count: doc.data().count,
+        }))
+        .filter((message) =>
+          message.id.toLowerCase().startsWith(prompt.toLowerCase()),
+        )
+        .sort((a, b) => b.count - a.count)
+        .slice(0, 10);
 
-      // Sort messages based on count in descending order
-      popularMessages.sort((a, b) => b.count - a.count);
+      // Map to an array of IDs for consistent comparison
+      const relevantMessageIds = relevantMessages.map((message) => message.id);
 
-      // Take only the top 10 most popular messages
-      const topPopularMessages = popularMessages.slice(0, 10);
+      if (relevantMessages.length < 4) {
+        // Calculate how many more items are needed to reach 4
+        const itemsNeeded = 4 - relevantMessages.length;
 
-      // Push IDs of the top 10 most popular messages to the popularArray
-      topPopularMessages.forEach((message) => {
-        hintArray.push(message.id);
-        popularArray.push(message.id);
-      });
+        // Ensure we're working with unique IDs from the state's popularMessages
+        const uniquePopularMessages = [...new Set(popularMessages)];
 
-      // Get user prompts
-      const userPromptsSnapshot = await getDocs(
-        collection(
-          db,
-          "wiki_bot",
-          Cookies.get("user_id"),
-          Cookies.get("user_id"),
-        ),
-      );
-      userPromptsSnapshot.forEach((doc) => {
-        hintArray.push(doc.data().prompt);
-      });
+        // Filter to find additional items not already included, based on IDs
+        const additionalItems = uniquePopularMessages
+          .filter((id) => !relevantMessageIds.includes(id))
+          .slice(0, itemsNeeded);
 
-      setPopularMessages(popularArray);
-      setHintData(hintArray);
+        // Merge IDs from relevantMessages and additionalItems for the final list
+        const mergedIds = [...relevantMessageIds, ...additionalItems];
+        setPopularMessages(mergedIds);
+      } else {
+        // If we already have 4 or more relevant messages, just update as is
+        setPopularMessages(relevantMessageIds);
+      }
     } catch (error) {
       console.error("Error fetching data: ", error);
     }
@@ -95,7 +94,8 @@ const Chatbot = () => {
       timestamp: Date.now(),
       chat_id: uuid,
     };
-
+    setPrompt("");
+    setMessagePlaceholder("Submission Recorded!");
     try {
       // Store the user's prompt in their personal collection
       await setDoc(
@@ -148,6 +148,9 @@ const Chatbot = () => {
         // If the document doesn't exist, create it with the initial count
         await setDoc(popularDocRef, { count: 1 });
       }
+      setTimeout(() => {
+        setMessagePlaceholder("Enter your prompt...");
+      }, 1500);
     } catch (error) {
       console.error("Error submitting prompt: ", error);
     }
@@ -193,14 +196,13 @@ const Chatbot = () => {
         </div>
         <form className="prompt-form" onSubmit={handlePromptSubmit}>
           <div className="prompt-container">
-            <Hint options={hintData} allowTabFill>
+            <Hint options={popularMessages} allowTabFill>
               <input
                 className="prompt-input"
                 value={prompt}
                 onChange={handlePromptChange}
                 onKeyDown={handleKeyDown}
-                inputRef={inputRef}
-                placeholder="Enter your prompt..."
+                placeholder={messagePlaceholder}
               />
             </Hint>
           </div>
