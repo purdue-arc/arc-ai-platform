@@ -11,6 +11,7 @@ import CodeStyleGraph from "./graphs/CodeStyleGraph.jsx";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
+import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 const NavigateCard = () => {
   let navigate = useNavigate();
@@ -162,11 +163,14 @@ const CodeAssistant = () => {
             </div>
           </div>
           <form className="codeInputForm" onSubmit={handleSubmit}>
-            <textarea
+            <TextareaAutosize
               className="codeInput"
-              placeholder="Paste your code here..."
+              minRows={5}
+              maxRows={20}
               value={code}
               onChange={handleCodeChange}
+              placeholder="Paste your code here..."
+              style={{ width: "100%", padding: "0.5vh" }}
             />
             <button className="getAdvice" type="submit">
               Get Code Advice
