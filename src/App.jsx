@@ -11,20 +11,23 @@ import FunctionTree from "./components/code-assistant/graphs/FunctionTree.jsx";
 
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     const userId = Cookies.get("user_id");
     console.log("user_id retrieved from cookie with value: " + userId);
     if (!userId) {
       setDialogOpen(true); // If no user_id cookie, open sign-in dialog
+    } else {
+      setAuthenticated(true);
     }
-  }, []);
+  }, [dialogOpen]);
   const handleClose = (event, reason) => {
     if (reason && reason === "backdropClick") return;
     setDialogOpen(false);
   };
   return (
-    <div className={dialogOpen ? "blur-background" : ""}>
+    <div className={!authenticated ? "blur-background" : ""}>
       <ScrollProvider>
         <BrowserRouter>
           <Routes>
